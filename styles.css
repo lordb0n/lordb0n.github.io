@@ -62,10 +62,10 @@ body, html {
 }
 
 .button {
-    width: 10vw;
-    height: 10vw;
-    max-width: 50px;
-    max-height: 50px;
+    width: 15vw;
+    height: 15vw;
+    max-width: 100px;
+    max-height: 100px;
     border-radius: 50%;
 }
 
@@ -119,4 +119,11 @@ body, html {
     background-color: #c9c9c9;
     border-radius: 10px;
     z-index: 2;
+}
+
+/* Медіа-запити для великих екранів */
+@media (min-width: 768px) {
+    .buttons-top {
+        bottom: 65px; /* Відсуваємо верхній ряд кнопок, щоб він не наїжджав на нижній ряд */
+    }
 }
