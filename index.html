@@ -51,6 +51,9 @@
                 } else {
                     document.getElementById('login-form').style.display = 'block';
                 }
+            })
+            .catch(error => {
+                console.error('Error:', error);
             });
     </script>
 </body>
