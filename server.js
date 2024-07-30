@@ -1,82 +1,39 @@
-cconst express = require('express');
+const express = require('express');
 const path = require('path');
-const session = require('express-session');
-const crypto = require('crypto');
 const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
 
 const app = express();
 const port = 3104;
 
-// Підключення до SQLite бази даних
-const db = new sqlite3.Database('./users.db', (err) => {
-    if (err) {
-        console.error('Error opening database:', err);
-    } else {
-        console.log('Connected to the SQLite database.');
-    }
-});
+const db = new sqlite3.Database('./register.db');
 
-// Налаштування сесії
-app.use(session({
-    secret: '7432411138:AAG8YWgHp3aBYWj4Muvj4IgAze6KV0CWUvE',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }
-}));
-
-// Налаштування body-parser
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Налаштування статичних файлів
+// Middleware
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Налаштовуємо кореневий маршрут для надсилання index.html
+// Serve the main HTML page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Маршрут для обробки аутентифікації через Telegram
-app.get('/auth/telegram', (req, res) => {
-    const authData = req.query;
-    const checkHash = authData.hash;
-    delete authData.hash;
+// Handle login requests
+app.post('/login', (req, res) => {
+    const { login, password } = req.body;
 
-    const secretKey = crypto.createHash('sha256').update('YOUR_BOT_TOKEN').digest();
-    const dataCheckString = Object.keys(authData).sort().map(key => `${key}=${authData[key]}`).join('\n');
-    const hash = crypto.createHmac('sha256', secretKey).update(dataCheckString).digest('hex');
-
-    if (hash === checkHash) {
-        req.session.userId = authData.id;
-        res.redirect('/');
-    } else {
-        res.send('Invalid Telegram login');
-    }
-});
-
-// Маршрут для обробки логіну через форму
-app.post('/auth/login', (req, res) => {
-    const { username, password } = req.body;
-
-    const query = `SELECT * FROM users WHERE username = ? AND password = ?`;
-    db.get(query, [username, password], (err, row) => {
+    db.get('SELECT * FROM users WHERE login = ? AND password = ?', [login, password], (err, row) => {
         if (err) {
-            res.status(500).send('Server error');
+            console.error(err);
+            res.status(500).json({ success: false });
         } else if (row) {
-            req.session.userId = row.id;
-            res.redirect('/');
+            res.json({ success: true });
         } else {
-            res.send('Username or password invalid');
+            res.json({ success: false });
         }
     });
 });
 
-// Маршрут для перевірки аутентифікації
-app.get('/auth/check', (req, res) => {
-    res.json({ authenticated: !!req.session.userId });
-});
-
-// Запускаємо сервер на всіх інтерфейсах
+// Start the server
 app.listen(port, '0.0.0.0', () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
