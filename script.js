@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loginContainer.style.display = 'none';
             searchContainer.style.display = 'block';
         } else {
-            loginError.textContent = 'Invalid login or password';
+            loginError.textContent = result.message || 'Login failed';
         }
     });
 });
