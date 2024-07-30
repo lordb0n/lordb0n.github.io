@@ -38,6 +38,7 @@ app.post('/login', (req, res) => {
         }
     });
 });
+
 // Handle auto login requests
 app.post('/auto-login', (req, res) => {
     const { telegramId, firstName, lastName, username } = req.body;
@@ -62,6 +63,7 @@ app.post('/auto-login', (req, res) => {
         }
     });
 });
+
 // Start the server
 app.listen(port, '0.0.0.0', () => {
     console.log(`Server is running on http://localhost:${port}`);
