@@ -62,3 +62,4 @@ async function autoLogin(user) {
         document.getElementById('login-error').textContent = 'Auto login failed';
     }
 }
+
