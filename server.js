@@ -38,7 +38,30 @@ app.post('/login', (req, res) => {
         }
     });
 });
+// Handle auto login requests
+app.post('/auto-login', (req, res) => {
+    const { telegramId, firstName, lastName, username } = req.body;
 
+    db.get('SELECT * FROM users WHERE telegram_id = ?', [telegramId], (err, row) => {
+        if (err) {
+            console.error(err);
+            res.status(500).json({ success: false, message: 'Internal server error' });
+        } else if (row) {
+            res.json({ success: true });
+        } else {
+            // Optional: Automatically create a user if not found
+            db.run('INSERT INTO users (telegram_id, username, first_name, last_name) VALUES (?, ?, ?, ?)', 
+                   [telegramId, username, firstName, lastName], (err) => {
+                if (err) {
+                    console.error(err);
+                    res.status(500).json({ success: false, message: 'Internal server error' });
+                } else {
+                    res.json({ success: true });
+                }
+            });
+        }
+    });
+});
 // Start the server
 app.listen(port, '0.0.0.0', () => {
     console.log(`Server is running on http://localhost:${port}`);
