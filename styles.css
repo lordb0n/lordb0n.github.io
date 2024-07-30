@@ -1,3 +1,4 @@
+/* styles.css */
 body, html {
     margin: 0;
     padding: 0;
@@ -9,121 +10,42 @@ body, html {
     background-color: #f0f0f0;
 }
 
-.container {
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    border-radius: 0px;
-    overflow: hidden;
-    position: relative;
+#login-container {
+    width: 300px;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.top-section {
-    width: 100%;
-    height: calc(100% - 50px);
-    position: relative;
-    background-color: lightgray;
+#login-container h2 {
+    margin: 0 0 20px;
+    text-align: center;
 }
 
-.background-rectangle {
-    width: 100%;
-    height: 100%;
-    background-color: lightgray;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-}
-
-.background-rectangle img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.buttons-top {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
+#login-form {
     display: flex;
-    justify-content: space-evenly;
-    z-index: 3;
+    flex-direction: column;
 }
 
-.buttons-bottom {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    z-index: 3;
-    background-color: black;
-    padding: 1mm;
+#login-form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
 }
 
-.button {
-    width: 15vw;
-    height: 15vw;
-    max-width: 100px;
-    max-height: 100px;
-    border-radius: 50%;
+#login-form button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.dislike {
-    background-color: red;
+#login-form button:hover {
+    background-color: #0056b3;
 }
 
-.like {
-    background-color: green;
-}
-
-.neutral {
-    background-color: blue;
-}
-
-.settings {
-    background-color: gray;
-}
-
-.wallet {
-    background-color: gold;
-}
-
-.plus {
-    background-color: teal;
-}
-
-.chat {
-    background-color: purple;
-}
-
-.profile {
-    background-color: darkblue;
-}
-
-.new-color1 {
-    background-color: orange;
-}
-
-.new-color2 {
-    background-color: pink;
-}
-
-.center-square {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    height: 90%;
-    background-color: #c9c9c9;
-    border-radius: 10px;
-    z-index: 2;
-}
-
-/* Медіа-запити для великих екранів */
-@media (min-width: 768px) {
-    .buttons-top {
-        bottom: 70px; /* Відсуваємо верхній ряд кнопок, щоб він не наїжджав на нижній ряд */
-    }
-}
+/* Add any additional styles for the search template */
