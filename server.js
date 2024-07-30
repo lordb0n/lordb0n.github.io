@@ -2,17 +2,27 @@ const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const crypto = require('crypto');
-const bodyParser = require('body-parser'); // Додаємо body-parser для обробки POST-запитів
+const bodyParser = require('body-parser');
+const sqlite3 = require('sqlite3').verbose();
 
 const app = express();
-const port = 3104; // Порт, на якому працює сервер
+const port = 3104;
+
+// Підключення до SQLite бази даних
+const db = new sqlite3.Database('./users.db', (err) => {
+    if (err) {
+        console.error('Error opening database:', err);
+    } else {
+        console.log('Connected to the SQLite database.');
+    }
+});
 
 // Налаштування сесії
 app.use(session({
-    secret: 'your-secret-key', // Змініть на ваш секретний ключ
+    secret: 'your-secret-key',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Змініть на true, якщо використовуєте HTTPS
+    cookie: { secure: false }
 }));
 
 // Налаштування body-parser
@@ -40,7 +50,7 @@ app.get('/auth/telegram', (req, res) => {
         req.session.userId = authData.id;
         res.redirect('/');
     } else {
-        res.redirect('/login');
+        res.send('Invalid Telegram login');
     }
 });
 
@@ -48,13 +58,17 @@ app.get('/auth/telegram', (req, res) => {
 app.post('/auth/login', (req, res) => {
     const { username, password } = req.body;
 
-    // Простий приклад перевірки логіну і паролю (замість цього використовуйте базу даних)
-    if (username === 'admin' && password === 'password') {
-        req.session.userId = username;
-        res.redirect('/');
-    } else {
-        res.redirect('/login');
-    }
+    const query = `SELECT * FROM users WHERE username = ? AND password = ?`;
+    db.get(query, [username, password], (err, row) => {
+        if (err) {
+            res.status(500).send('Server error');
+        } else if (row) {
+            req.session.userId = row.id;
+            res.redirect('/');
+        } else {
+            res.send('Username or password invalid');
+        }
+    });
 });
 
 // Маршрут для перевірки аутентифікації
