@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Layout</title>
     <link rel="stylesheet" href="styles.css">
+    <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="YOUR_BOT_USERNAME" data-size="large" data-auth-url="/auth/telegram" data-request-access="write"></script>
 </head>
 <body>
-    <div class="container">
+    <div id="auth-section">
+        <div id="login-form" style="display: none;">
+            <form id="login" action="/auth/login" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="YOUR_BOT_USERNAME" data-size="large" data-auth-url="/auth/telegram" data-request-access="write"></script>
+    </div>
+    <div class="container" style="display:none;">
         <div class="top-section">
             <div class="background-rectangle">
                 <img src="user_photo.jpg" alt="User Photo">
@@ -28,5 +41,17 @@
             <div class="button profile"></div>
         </div>
     </div>
+    <script>
+        fetch('/auth/check')
+            .then(response => response.json())
+            .then(data => {
+                if (data.authenticated) {
+                    document.getElementById('auth-section').style.display = 'none';
+                    document.querySelector('.container').style.display = 'flex';
+                } else {
+                    document.getElementById('login-form').style.display = 'block';
+                }
+            });
+    </script>
 </body>
 </html>
