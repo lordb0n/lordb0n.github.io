@@ -6,7 +6,13 @@ const sqlite3 = require('sqlite3').verbose();
 const app = express();
 const port = 3104;
 
-const db = new sqlite3.Database('./register.db');
+const db = new sqlite3.Database('./register.db', (err) => {
+    if (err) {
+        console.error('Error opening database:', err);
+    } else {
+        console.log('Database connected');
+    }
+});
 
 // Middleware
 app.use(bodyParser.json());
@@ -24,11 +30,11 @@ app.post('/login', (req, res) => {
     db.get('SELECT * FROM users WHERE login = ? AND password = ?', [login, password], (err, row) => {
         if (err) {
             console.error(err);
-            res.status(500).json({ success: false });
+            res.status(500).json({ success: false, message: 'Internal server error' });
         } else if (row) {
             res.json({ success: true });
         } else {
-            res.json({ success: false });
+            res.json({ success: false, message: 'Invalid login or password' });
         }
     });
 });
