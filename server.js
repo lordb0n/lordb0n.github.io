@@ -1,4 +1,4 @@
-const express = require('express');
+cconst express = require('express');
 const path = require('path');
 const session = require('express-session');
 const crypto = require('crypto');
@@ -19,7 +19,7 @@ const db = new sqlite3.Database('./users.db', (err) => {
 
 // Налаштування сесії
 app.use(session({
-    secret: 'your-secret-key',
+    secret: '7432411138:AAG8YWgHp3aBYWj4Muvj4IgAze6KV0CWUvE',
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }
