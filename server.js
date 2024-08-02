@@ -13,19 +13,28 @@ app.use(express.static('public'));
 
 // Listen for socket connections
 io.on('connection', (socket) => {
-  console.log('New user connected');
+  console.log('Новый пользователь подключился');
 
-  // Listen for chat messages
+  // Отправка последних 100 сообщений новому пользователю
+  socket.emit('previousMessages', messages.slice(-100));
+
+  // Слушаем сообщения чата
   socket.on('chat message', (msg) => {
-    io.emit('chat message', msg);
+    const message = { text: msg, id: socket.id };
+    messages.push(message);
+    io.emit('chat message', message);
   });
 
-  // Handle user disconnect
+  // Обработка отключения пользователя
   socket.on('disconnect', () => {
-    console.log('User disconnected');
+    console.log('Пользователь отключился');
   });
 });
 
+// Запускаем сервер
 server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Сервер запущен на порту ${PORT}`);
 });
+
+// Хранилище сообщений
+let messages = [];
