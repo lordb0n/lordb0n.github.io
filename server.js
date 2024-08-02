@@ -8,10 +8,10 @@ const io = socketIo(server);
 
 const PORT = process.env.PORT || 3000;
 
-// Serve static files
-app.use(express.static('public'));
+// Хранилище сообщений
+let messages = [];
 
-// Listen for socket connections
+// Обработка подключения клиентов
 io.on('connection', (socket) => {
   console.log('Новый пользователь подключился');
 
@@ -22,6 +22,8 @@ io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
     const message = { text: msg, id: socket.id };
     messages.push(message);
+
+    // Отправляем сообщение всем подключенным пользователям
     io.emit('chat message', message);
   });
 
@@ -36,5 +38,5 @@ server.listen(PORT, () => {
   console.log(`Сервер запущен на порту ${PORT}`);
 });
 
-// Хранилище сообщений
-let messages = [];
+// Настройка сервера для обслуживания статических файлов
+app.use(express.static('public'));
