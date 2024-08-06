@@ -1,42 +1,67 @@
-const express = require('express');
-const http = require('http');
-const socketIo = require('socket.io');
+document.addEventListener('DOMContentLoaded', function () {
+    const messagesContainer = document.getElementById('messages');
+    const messageInput = document.getElementById('message-input');
+    const sendButton = document.getElementById('send-button');
 
-const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
+    const gistId = 'ВАШ_GIST_ID'; // Вставте ваш GitHub Gist ID сюди
 
-const PORT = process.env.PORT || 3000;
+    // Функція для завантаження повідомлень з GitHub Gist
+    async function loadMessages() {
+        const response = await fetch(`https://api.github.com/gists/${gistId}`);
+        const gistData = await response.json();
+        const messages = JSON.parse(gistData.files['chat.json'].content);
+        
+        messagesContainer.innerHTML = '';
+        messages.forEach(msg => {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = msg;
+            messagesContainer.appendChild(messageElement);
+        });
+    }
 
-// Хранилище сообщений
-let messages = [];
+    // Функція для відправки нового повідомлення
+    async function sendMessage() {
+        const message = messageInput.value;
+        if (!message) return;
 
-// Обработка подключения клиентов
-io.on('connection', (socket) => {
-  console.log('Новый пользователь подключился');
+        const response = await fetch(`https://api.github.com/gists/${gistId}`);
+        const gistData = await response.json();
+        const messages = JSON.parse(gistData.files['chat.json'].content);
 
-  // Отправка последних 100 сообщений новому пользователю
-  socket.emit('previousMessages', messages.slice(-100));
+        messages.push(message);
 
-  // Слушаем сообщения чата
-  socket.on('chat message', (msg) => {
-    const message = { text: msg, id: socket.id };
-    messages.push(message);
+        await fetch(`https://api.github.com/gists/${gistId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `token ВАШ_GITHUB_TOKEN` // Використовуйте ваш особистий токен GitHub
+            },
+            body: JSON.stringify({
+                files: {
+                    'chat.json': {
+                        content: JSON.stringify(messages.slice(-50)) // Зберігати останні 50 повідомлень
+                    }
+                }
+            })
+        });
 
-    // Отправляем сообщение всем подключенным пользователям
-    io.emit('chat message', message);
-  });
+        messageInput.value = '';
+        loadMessages();
+    }
 
-  // Обработка отключения пользователя
-  socket.on('disconnect', () => {
-    console.log('Пользователь отключился');
-  });
+    // Ініціалізація чату
+    loadMessages();
+
+    // Обробка натискання кнопки відправки
+    sendButton.addEventListener('click', sendMessage);
+
+    // Відправка повідомлення при натисканні Enter
+    messageInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    // Оновлення повідомлень кожні 5 секунд
+    setInterval(loadMessages, 5000);
 });
-
-// Запускаем сервер
-server.listen(PORT, () => {
-  console.log(`Сервер запущен на порту ${PORT}`);
-});
-
-// Настройка сервера для обслуживания статических файлов
-app.use(express.static('public'));
