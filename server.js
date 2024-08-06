@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const messageInput = document.getElementById('message-input');
     const sendButton = document.getElementById('send-button');
 
-    const gistId = 'ВАШ_GIST_ID'; // Вставте ваш GitHub Gist ID сюди
+    const gistId = 'b96cff6d8852bc7ec8b663bdd7886663'; // Вставте ваш GitHub Gist ID сюди
 
     // Функція для завантаження повідомлень з GitHub Gist
     async function loadMessages() {
