@@ -65,3 +65,17 @@ document.addEventListener('DOMContentLoaded', function () {
     // Оновлення повідомлень кожні 5 секунд
     setInterval(loadMessages, 5000);
 });
+await fetch(`https://api.github.com/gists/${gistId}`, {
+    method: 'PATCH',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `token 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` // Вставте ваш токен тут
+    },
+    body: JSON.stringify({
+        files: {
+            'chat.json': {
+                content: JSON.stringify(messages.slice(-50)) // Зберігати останні 50 повідомлень
+            }
+        }
+    })
+});
