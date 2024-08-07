@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `token ВАШ_GITHUB_TOKEN` // Використовуйте ваш особистий токен GitHub
+                'Authorization': `token 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` // Використовуйте ваш особистий токен GitHub
             },
             body: JSON.stringify({
                 files: {
