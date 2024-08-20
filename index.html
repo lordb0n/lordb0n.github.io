@@ -17,7 +17,7 @@
             background-color: #af449c;
             font-family: Arial, sans-serif;
             box-sizing: border-box;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Забороняє горизонтальне прокручування */
         }
 
         .container {
@@ -29,15 +29,54 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            padding: 0;
+            padding: 0 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .hidden {
+            display: none;
         }
 
         .title {
+            font-size: 6vw;
+            color: black;
+            margin-top: 30%; /* Додано 10 пікселів до верхнього відступу */
+            text-align: center;
+        }
+
+        .center-description {
+            font-size: 5vw; /* Збільшено розмір шрифту на 1.5 одиниці */
+            color: black;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-container {
+            width: 100%;
+            padding: 15px;
+            background-color: #C274C2;
+            text-align: center;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-radius: 0;
+        }
+
+        .button-container:hover {
+            background-color: #B064B0;
+        }
+
+        .button-container p {
+            margin: 0;
             font-size: 5vw;
             color: black;
-            margin-top: 20%;
-            text-align: center;
-            width: 100%; /* Центрування заголовку */
         }
 
         .center-container {
@@ -51,17 +90,10 @@
             box-sizing: border-box; /* Включає padding в ширину */
         }
 
-        .center-description {
-            font-size: 4.5vw;
-            color: black;
-            text-align: center;
-            margin-bottom: 20px;
-            width: 100%; /* Центрування опису */
-        }
-
         .input-container {
             width: 100%; /* Максимальна ширина для поля вводу */
             text-align: center;
+            position: relative;
         }
 
         .input-container input {
@@ -71,46 +103,67 @@
             border: none;
             font-size: 4.5vw;
             background-color: #C274C2;
-            color: rgb(255, 245, 245);
+            color: white;
             text-align: center;
             outline: none;
             box-sizing: border-box; /* Включає padding в ширину */
         }
 
-        .button-container {
-            width: 1000px;
-            padding: 15px;
-            background-color: #C274C2;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 0;
+        .input-container input::placeholder {
+            color: transparent; /* Приховуємо стандартний текст placeholder */
         }
 
-        .button-container:hover {
-            background-color: #B064B0;
+        .input-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            opacity: 0.7;
+            pointer-events: none;
+            font-size: 4.5vw;
+            transition: opacity 0.3s;
         }
 
-        .button-container p {
-            margin: 0;
-            font-size: 5vw;
-            color: black;
+        .input-container input:focus + .input-placeholder,
+        .input-container input:not(:placeholder-shown) + .input-placeholder {
+            opacity: 0; /* Прибираємо текст, коли вводять текст */
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <!-- Перший екран -->
+    <div class="container" id="screen1">
+        <div class="title">GORA</div>
+        <div class="center-description">Бот для Ваших потаємних бажань</div>
+        <div class="button-container" onclick="showScreen2()">
+            <p>Створити профіль</p>
+        </div>
+    </div>
+
+    <!-- Другий екран -->
+    <div class="container hidden" id="screen2">
         <div class="title">Давай знайомитися</div>
         <div class="center-container">
             <div class="center-description">Як тебе звуть?</div>
             <div class="input-container">
-                <input type="text" placeholder="Введіть своє ім'я">
+                <input type="text" id="name-input" placeholder=" " onfocus="this.placeholder = ''" onblur="this.placeholder = ' '">
+                <div class="input-placeholder">Введіть своє ім'я</div>
             </div>
         </div>
         <div class="button-container">
             <p>Далі</p>
         </div>
     </div>
+
+    <script>
+        function showScreen2() {
+            document.getElementById('screen1').classList.add('hidden');
+            document.getElementById('screen2').classList.remove('hidden');
+        }
+    </script>
 </body>
 
 </html>
+
