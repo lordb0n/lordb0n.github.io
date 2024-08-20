@@ -14,47 +14,49 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #af449c;
+            background-color: #c048aa;
             font-family: Arial, sans-serif;
             box-sizing: border-box;
-            overflow-x: hidden; /* Забороняє горизонтальне прокручування */
+            overflow-x: hidden;
         }
 
         .container {
             width: 100%;
             height: 100%;
-            max-width: 100vw;
-            background-color: #af449c;
+            max-width: 150vw;
+            background-color: #c048aa;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 0 20px;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .hidden {
-            display: none;
         }
 
         .title {
+            font-size: 10vw;
+            color: black;
+            margin-top: 5%;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .title1 {
             font-size: 6vw;
             color: black;
-            margin-top: 30%; /* Додано 10 пікселів до верхнього відступу */
+            margin-top: 5%;
             text-align: center;
+            width: 100%;
+        }
+        
+        .center-description {
+        font-size: 5vw;
+        color: black;
+        text-align: center;
+        margin-top: 20px; /* Відстань зверху */
+        margin-bottom: 150px; /* Відстань знизу */
+        width: 100%;
         }
 
-        .center-description {
-            font-size: 5vw; /* Збільшено розмір шрифту на 1.5 одиниці */
-            color: black;
-            text-align: center;
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
         .button-container {
             width: 100%;
@@ -79,38 +81,29 @@
             color: black;
         }
 
-        .center-container {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            padding: 0 5%; /* Відступи з боків */
-            box-sizing: border-box; /* Включає padding в ширину */
-        }
-
         .input-container {
-            width: 100%; /* Максимальна ширина для поля вводу */
+            width: 400px;
             text-align: center;
             position: relative;
+            margin-top: -130px;
+            margin-bottom: 20px;
         }
 
         .input-container input {
             width: 100%;
             padding: 15px;
-            border-radius: 20px; /* Закруглення по всіх кутах */
+            border-radius: 20px;
             border: none;
             font-size: 4.5vw;
             background-color: #C274C2;
             color: white;
             text-align: center;
             outline: none;
-            box-sizing: border-box; /* Включає padding в ширину */
+            box-sizing: border-box;
         }
 
         .input-container input::placeholder {
-            color: transparent; /* Приховуємо стандартний текст placeholder */
+            color: transparent;
         }
 
         .input-placeholder {
@@ -127,24 +120,22 @@
 
         .input-container input:focus + .input-placeholder,
         .input-container input:not(:placeholder-shown) + .input-placeholder {
-            opacity: 0; /* Прибираємо текст, коли вводять текст */
+            opacity: 0;
         }
     </style>
 </head>
 
 <body>
-    <!-- Перший екран -->
-    <div class="container" id="screen1">
+    <div class="container" id="page1">
         <div class="title">GORA</div>
         <div class="center-description">Бот для Ваших потаємних бажань</div>
-        <div class="button-container" onclick="showScreen2()">
+        <div class="button-container" onclick="showPage2()">
             <p>Створити профіль</p>
         </div>
     </div>
 
-    <!-- Другий екран -->
-    <div class="container hidden" id="screen2">
-        <div class="title">Давай знайомитися</div>
+    <div class="container" id="page2" style="display:none;">
+        <div class="title1">Давай знайомитися</div>
         <div class="center-container">
             <div class="center-description">Як тебе звуть?</div>
             <div class="input-container">
@@ -158,12 +149,11 @@
     </div>
 
     <script>
-        function showScreen2() {
-            document.getElementById('screen1').classList.add('hidden');
-            document.getElementById('screen2').classList.remove('hidden');
+        function showPage2() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'flex';
         }
     </script>
 </body>
 
 </html>
-
