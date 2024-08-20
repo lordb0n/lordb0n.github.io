@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Повідомлення</title>
+    <title>GORA</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #d493da;
+            background-color: #D493DA;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,130 +16,63 @@
             margin: 0;
         }
 
-        .message-container {
+        .container {
             width: 300px;
-            background-color: #e5b1ec;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            height: 600px;
+            background-color: #A64CA4;
+            border-radius: 20px;
+            border: 2px solid black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .title {
+            font-size: 24px;
+            color: black;
+            margin-top: 50px;
+        }
+
+        .description {
+            font-size: 16px;
+            color: black;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container {
+            width: 100%;
             padding: 10px;
+            background-color: #C274C2;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
         }
 
-        .message-container h2 {
-            text-align: left;
+        .button-container:hover {
+            background-color: #B064B0;
+        }
+
+        .button-container p {
+            margin: 0;
             font-size: 18px;
-            margin-bottom: 10px;
             color: black;
         }
-
-        .message-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            padding: 5px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .message-item:hover {
-            background-color: #f0c6f4;
-        }
-
-        .message-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #fff;
-            margin-right: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            color: #d493da;
-            border: 2px solid #d493da;
-        }
-
-        .message-text {
-            flex: 1;
-        }
-
-        .message-text .name {
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: black;
-        }
-
-        .message-text .text {
-            font-size: 14px;
-            color: #555;
-        }
-
     </style>
 </head>
+
 <body>
-
-<div class="message-container">
-    <h2>Повідомлення</h2>
-    <div class="message-item">
-        <div class="avatar">M</div>
-        <div class="message-text">
-            <div class="name">Марина</div>
-            <div class="text">Коли наша зустріч?</div>
+    <div class="container">
+        <div class="title">GORA</div>
+        <div class="description">Бот для Ваших потаємних бажань</div>
+        <div class="button-container">
+            <p>Створити профіль</p>
         </div>
     </div>
-    <div class="message-item">
-        <div class="avatar">C</div>
-        <div class="message-text">
-            <div class="name">Соня</div>
-            <div class="text">Як пройшов день?</div>
-        </div>
-    </div>
-    <div class="message-item">
-        <div class="avatar">K</div>
-        <div class="message-text">
-            <div class="name">Катя</div>
-            <div class="text">Хочеться чогось гарячого!</div>
-        </div>
-    </div>
-    <div class="message-item">
-        <div class="avatar">I</div>
-        <div class="message-text">
-            <div class="name">Іра</div>
-            <div class="text">Hi</div>
-        </div>
-    </div>
-    <div class="message-item">
-        <div class="avatar">I</div>
-        <div class="message-text">
-            <div class="name">Інна</div>
-            <div class="text">Я сумую за тобою</div>
-        </div>
-    </div>
-    <div class="message-item">
-        <div class="avatar">M</div>
-        <div class="message-text">
-            <div class="name">Маша</div>
-            <div class="text">Сьогодні з нами чи з нею?</div>
-        </div>
-    </div>
-    <div class="message-item">
-        <div class="avatar">C</div>
-        <div class="message-text">
-            <div class="name">Софія</div>
-            <div class="text">Все буде добре</div>
-        </div>
-    </div>
-    <div class="message-item">
-        <div class="avatar">R</div>
-        <div class="message-text">
-            <div class="name">Роксолана</div>
-            <div class="text">Як на рахунок фільму?</div>
-        </div>
-    </div>
-</div>
-
 </body>
+
 </html>
