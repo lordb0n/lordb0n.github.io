@@ -17,7 +17,7 @@
             background-color: #A64CA4;
             font-family: Arial, sans-serif;
             box-sizing: border-box;
-            overflow-x: hidden; /* Забороняє горизонтальне прокручування */
+            overflow-x: hidden;
         }
 
         .container {
@@ -33,27 +33,44 @@
         }
 
         .title {
-            font-size: 6vw;
+            font-size: 5vw;
             color: black;
             margin-top: 20%;
             text-align: center;
         }
 
-        .description {
-            font-size: 4vw;
-            color: black;
-            text-align: center;
-            margin-top: 20px;
+        .center-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
         }
 
         .center-description {
-            font-size: 3.5vw; /* Зменшено розмір шрифту */
+            font-size: 4.5vw;
             color: black;
             text-align: center;
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            width: 90%; /* Залишаємо невеликий відступ з боків */
+            max-width: 100%; /* Забезпечує, що ширина не виходить за межі екрану */
+            text-align: center;
+        }
+
+        .input-container input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 20px; /* Закруглення по всіх кутах */
+            border: none;
+            font-size: 4vw;
+            background-color: #C274C2;
+            color: white;
+            text-align: center;
+            outline: none;
         }
 
         .button-container {
@@ -83,10 +100,15 @@
 
 <body>
     <div class="container">
-        <div class="title">GORA</div>
-        <div class="center-description">Бот для Ваших потаємних бажань</div>
+        <div class="title">Давай знайомитися</div>
+        <div class="center-container">
+            <div class="center-description">Як тебе звуть?</div>
+            <div class="input-container">
+                <input type="text" placeholder="Введіть своє ім'я">
+            </div>
+        </div>
         <div class="button-container">
-            <p>Створити профіль</p>
+            <p>Далі</p>
         </div>
     </div>
 </body>
