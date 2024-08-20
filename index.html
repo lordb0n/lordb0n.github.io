@@ -39,7 +39,7 @@
             text-align: center;
             width: 100%;
         }
-        
+
         .title1 {
             font-size: 6vw;
             color: black;
@@ -47,16 +47,15 @@
             text-align: center;
             width: 100%;
         }
-        
-        .center-description {
-        font-size: 5vw;
-        color: black;
-        text-align: center;
-        margin-top: 20px; /* Відстань зверху */
-        margin-bottom: 150px; /* Відстань знизу */
-        width: 100%;
-        }
 
+        .center-description {
+            font-size: 5vw;
+            color: black;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
 
         .button-container {
             width: 100%;
@@ -85,11 +84,11 @@
             width: 400px;
             text-align: center;
             position: relative;
-            margin-top: -130px;
-            margin-bottom: 20px;
+            margin-bottom: 50px; /* Відстань між текстом і інпутом */
         }
 
-        .input-container input {
+        .input-container input,
+        .select-container select {
             width: 100%;
             padding: 15px;
             border-radius: 20px;
@@ -122,6 +121,33 @@
         .input-container input:not(:placeholder-shown) + .input-placeholder {
             opacity: 0;
         }
+
+        .select-container {
+            width: 400px;
+            text-align: center;
+            position: relative;
+            margin-top: +20px;
+            margin-bottom: 100px; /* Відстань між текстом і інпутом */
+        }
+
+
+        .select-container select {
+            appearance: none;
+            background-color: #e580e5;
+            color: white;
+        }
+
+        .select-placeholder {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            right: 0;
+            color: white;
+            opacity: 0.7;
+            pointer-events: none;
+            font-size: 4.5vw;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -143,6 +169,40 @@
                 <div class="input-placeholder">Введіть своє ім'я</div>
             </div>
         </div>
+        <div class="button-container" onclick="showPage3()">
+            <p>Далі</p>
+        </div>
+    </div>
+
+    <div class="container" id="page3" style="display:none;">
+        <div class="center-container">
+            <div class="center-description">Скільки тобі років?</div>
+            <div class="input-container">
+                <input type="number" id="age-input" placeholder=" " min="1" max="120" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onfocus="this.placeholder = ''" onblur="this.placeholder = ' '">
+                <div class="input-placeholder">Введіть свій вік</div>
+            </div>
+        </div>
+        <div class="button-container" onclick="showPage4()">
+            <p>Далі</p>
+        </div>
+    </div>      
+
+    <div class="container" id="page4" style="display:none;">
+        <div class="title1">Обери свою стать</div>
+        <div class="center-container">
+            <div class="select-container">
+                <select id="gender-select">
+                    <option value="" disabled selected hidden>Оберіть...</option>
+                    <option value="male">Чоловік</option>
+                    <option value="female">Жінка</option>
+                    <option value="couple">Пара</option>
+                    <option value="bi">Бі</option>
+                    <option value="lesbian">Лесбі</option>
+                    <option value="gay">Гей</option>
+                    <option value="other">Інше</option>
+                </select>
+            </div>
+        </div>
         <div class="button-container">
             <p>Далі</p>
         </div>
@@ -152,6 +212,16 @@
         function showPage2() {
             document.getElementById('page1').style.display = 'none';
             document.getElementById('page2').style.display = 'flex';
+        }
+
+        function showPage3() {
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('page3').style.display = 'flex';
+        }
+
+        function showPage4() {
+            document.getElementById('page3').style.display = 'none';
+            document.getElementById('page4').style.display = 'flex';
         }
     </script>
 </body>
