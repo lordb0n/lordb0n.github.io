@@ -14,8 +14,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #C060C0; /* Темніший фіолетовий */
+            background-color: #A64CA4;
             font-family: Arial, sans-serif;
+            box-sizing: border-box;
         }
 
         .container {
@@ -26,14 +27,14 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
+            padding: 0 20px; /* Внутрішні відступи по бокам */
         }
 
         .title {
             font-size: 6vw;
             color: black;
             margin-top: 20%;
+            text-align: center;
         }
 
         .description {
@@ -41,16 +42,19 @@
             color: black;
             text-align: center;
             margin-top: 20px;
-            margin-bottom: 20%;
         }
 
         .button-container {
-            width: 100%;  /* Змінили на 100% для вирівнювання по ширині */
+            width: 100%;
             padding: 15px;
             background-color: #C274C2;
-            border-radius: 10px;
             text-align: center;
             cursor: pointer;
+            position: absolute;
+            bottom: 0;
+            left: 0; /* Вирівнювання кнопки по лівому краю */
+            right: 0; /* Вирівнювання кнопки по правому краю */
+            border-radius: 0; /* Видалення округлених кутів */
         }
 
         .button-container:hover {
@@ -68,7 +72,7 @@
 <body>
     <div class="container">
         <div class="title">GORA</div>
-        <div class="description">Бот для Ваших потаємних бажань</div> <!-- Відновили текст -->
+        <div class="description">Бот для Ваших потаємних бажань</div>
         <div class="button-container">
             <p>Створити профіль</p>
         </div>
@@ -76,3 +80,4 @@
 </body>
 
 </html>
+
