@@ -203,11 +203,31 @@
                 </select>
             </div>
         </div>
-        <div class="button-container">
+        <div class="button-container"onclick="showPage5()">
             <p>Далі</p>
         </div>
     </div>
-
+    
+    <div class="container" id="page5" style="display:none;">
+        <div class="title1">Оберіть Вашу орієнтацію</div>
+        <div class="center-container">
+            <div class="select-container">
+                <select id="gender-select">
+                    <option value="" disabled selected hidden>Оберіть...</option>
+                    <option value="male">Чоловік</option>
+                    <option value="female">Жінка</option>
+                    <option value="couple">Пара</option>
+                    <option value="bi">Бі</option>
+                    <option value="lesbian">Лесбі</option>
+                    <option value="gay">Гей</option>
+                    <option value="other">Інше</option>
+                </select>
+            </div>
+        </div>
+        <div class="button-container"onclick="showPage5()">
+            <p>Далі</p>
+        </div>
+    </div>
     <script>
         function showPage2() {
             document.getElementById('page1').style.display = 'none';
@@ -223,6 +243,22 @@
             document.getElementById('page3').style.display = 'none';
             document.getElementById('page4').style.display = 'flex';
         }
+    
+        function showPage5() {
+            document.getElementById('page4').style.display = 'none';
+            document.getElementById('page5').style.display = 'flex';
+        }
+        
+        // Додаємо обробник події keydown для полів вводу
+        document.querySelectorAll('input').forEach(function(inputElement) {
+            inputElement.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {  // Перевіряємо, чи натиснута клавіша "Enter"
+                    event.preventDefault();   // Запобігаємо стандартній дії
+                    inputElement.blur();      // Знімаємо фокус з поля вводу, що закриває клавіатуру
+                }
+            });
+        });
+
     </script>
 </body>
 
