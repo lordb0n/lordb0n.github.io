@@ -148,6 +148,93 @@
             font-size: 4.5vw;
             text-align: center;
         }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .photo-grid div {
+            background-color: #d67cd6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            border: 2px solid black;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            width: 100px;
+            height: 150px;
+        }
+
+        .photo-grid div::before {
+            content: "+";
+            font-size: 24px;
+            color: black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s;
+        }
+
+        .photo-grid div.filled::before {
+            content: none;
+        }
+
+        .photo-grid input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .grid-item {
+            background-color: #e580e5;
+            border-radius: 15px;
+            padding: 15px;
+            position: relative;
+            text-align: center;
+            font-size: 3vw;
+            color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .grid-item .description {
+            margin-top: 10px;
+            font-size: 2vw;
+            color: #f1e5f1;
+        }
+
+        .grid-item input[type="checkbox"] {
+            margin-top: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 
@@ -196,9 +283,6 @@
                     <option value="male">Чоловік</option>
                     <option value="female">Жінка</option>
                     <option value="couple">Пара</option>
-                    <option value="bi">Бі</option>
-                    <option value="lesbian">Лесбі</option>
-                    <option value="gay">Гей</option>
                     <option value="other">Інше</option>
                 </select>
             </div>
@@ -214,9 +298,7 @@
             <div class="select-container">
                 <select id="gender-select">
                     <option value="" disabled selected hidden>Оберіть...</option>
-                    <option value="male">Чоловік</option>
-                    <option value="female">Жінка</option>
-                    <option value="couple">Пара</option>
+                    <option value="male">Гетеро</option>
                     <option value="bi">Бі</option>
                     <option value="lesbian">Лесбі</option>
                     <option value="gay">Гей</option>
@@ -224,10 +306,79 @@
                 </select>
             </div>
         </div>
-        <div class="button-container"onclick="showPage5()">
+        <div class="button-container"onclick="showPage6()">
             <p>Далі</p>
         </div>
     </div>
+
+    <div class="container" id="page6" style="display:none;">
+        <div class="title1">Хто Вам цікавий?</div>
+        <div class="center-container">
+            <div class="select-container">
+                <select id="gender-select">
+                    <option value="" disabled selected hidden>Оберіть...</option>
+                    <option value="male">Чоловіки</option>
+                    <option value="bi">Жінки</option>
+                    <option value="lesbian">Пари</option>
+                    <option value="gay">Бі дівчата</option>
+                    <option value="other">Бі хлопці</option>
+                    <option value="other">Бі пара</option>
+                </select>
+            </div>
+        </div>
+        <div class="button-container"onclick="showPage7()">
+            <p>Далі</p>
+        </div>
+    </div>
+
+    <div class="container" id="page7" style="display:none;">
+        <div class="container">
+            <div class="photo-grid">
+                <div>
+                    <input type="file" accept="image/*" onchange="loadFile(event, 0)">
+                    <img id="output0" style="display:none;">
+                </div>
+                <div>
+                    <input type="file" accept="image/*" onchange="loadFile(event, 1)">
+                    <img id="output1" style="display:none;">
+                </div>
+                <div>
+                    <input type="file" accept="image/*" onchange="loadFile(event, 2)">
+                    <img id="output2" style="display:none;">
+                </div>
+                <div>
+                    <input type="file" accept="image/*" onchange="loadFile(event, 3)">
+                    <img id="output3" style="display:none;">
+                </div>
+                <div>
+                    <input type="file" accept="image/*" onchange="loadFile(event, 4)">
+                    <img id="output4" style="display:none;">
+                </div>
+                <div>
+                    <input type="file" accept="image/*" onchange="loadFile(event, 5)">
+                    <img id="output5" style="display:none;">
+                </div>
+            </div>
+            <div class="title1">Додайте свої найкращі фото</div>
+            <br>(мінімум 2 фото)
+            </div>
+            <div class="button-container"onclick="showPage8()">
+                <p>Далі</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" id="page8" style="display:none;">
+        <div class="container">
+            <div class="title1">Обери свої Спокуси</div>
+            <div class="grid-container" id="grid-container">
+                <!-- Тут будуть генеруватися елементи -->
+            </div>
+            <div class="button-container">
+                <p>Далі</p>
+            </div>
+        </div>
+    </div>    
     <script>
         function showPage2() {
             document.getElementById('page1').style.display = 'none';
@@ -249,6 +400,23 @@
             document.getElementById('page5').style.display = 'flex';
         }
         
+        function showPage6() {
+            document.getElementById('page5').style.display = 'none';
+            document.getElementById('page6').style.display = 'flex';
+        }
+        
+        function showPage7() {
+            document.getElementById('page6').style.display = 'none';
+            document.getElementById('page7').style.display = 'flex';
+        }
+        function showPage7() {
+            document.getElementById('page6').style.display = 'none';
+            document.getElementById('page7').style.display = 'flex';
+        
+        }function showPage8() {
+            document.getElementById('page7').style.display = 'none';
+            document.getElementById('page8').style.display = 'flex';
+        }
         // Додаємо обробник події keydown для полів вводу
         document.querySelectorAll('input').forEach(function(inputElement) {
             inputElement.addEventListener('keydown', function(event) {
@@ -259,6 +427,60 @@
             });
         });
 
+        function loadFile(event, index) {
+            const output = document.getElementById('output' + index);
+            const container = output.parentElement;
+
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.style.display = 'block';
+
+            // Додаємо клас filled, щоб прибрати плюсик
+            container.classList.add('filled');
+        }
+
+        const temptations = [
+            { name: "Обійми", description: "Дотик душі" },
+            { name: "Поцілунки", description: "Мова кохання" },
+            { name: "Масаж", description: "Магія рук" },
+            { name: "Футплей", description: "Вибирай в якому ритмі відпочивати" },
+            { name: "Іграшки", description: "Інтрументи радості" },
+            { name: "Оральний секс", description: "Ніжність губ" },
+            { name: "Домашні відео", description: "Моя власна історія" },
+            { name: "Стриптиз", description: "Танець спокуси" },
+            { name: "Фантазії", description: "Світ уяви" },
+            { name: "Брудні розмови", description: "Слова, що палять" },
+            { name: "Інтелект", description: "Розум '–' найкраща прелюдія" },
+            { name: "Секстинг", description: "Технології бажання" },
+            { name: "Фемдом", description: "Сила у витонченості" },
+            { name: "Спанкінг", description: "Удар задоволення" },
+            { name: "Домінування", description: "Я – твій господар" },
+            { name: "Підпорядкування", description: "Солодкий смак контролю" },
+            { name: "Світч", description: "Зміна ролей" },
+            { name: "Гік вайс", description: "Чарівні дивацтва" },
+            { name: "Куколд", description: "Інший погляд на задоволення" },
+            { name: "Ігри з воском", description: "Тепло пристрасті" },
+            { name: "Рольові ігри", description: "Втілення фантазій" },
+            { name: "Позаду", description: "Таємна позиція" },
+            { name: "Еджинг", description: "Мистецтво стриманості" },
+            { name: "Всліпу", description: "Темрява відкриває" },
+            { name: "Шоколад", description: "Солодка спокуса" },
+            { name: "Тату&Пірсинг", description: "Знакове тіло" },
+            { name: "Свінг", description: "Обмін емоціями" },
+            { name: "Ваніль", description: "Класика у простоті" },
+        ];
+
+        const container = document.getElementById('grid-container');
+
+        temptations.forEach(temptation => {
+            const item = document.createElement('div');
+            item.className = 'grid-item';
+            item.innerHTML = `
+                ${temptation.name}
+                <div class="description">${temptation.description}</div>
+                <input type="checkbox">
+            `;
+            container.appendChild(item);
+        });
     </script>
 </body>
 
