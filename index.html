@@ -75,10 +75,13 @@
         }
 
         .button-container p {
-            margin: 0;
             font-size: 5vw;
             color: black;
+            margin: 0;
+            width: 90%; /* Фіксована ширина кнопки */
+            text-align: center;
         }
+
 
         .input-container {
             width: 400px;
@@ -223,7 +226,8 @@
             gap: 20px;
             width: 100%;
             max-width: 5000px; /* Максимальна ширина контейнера */
-            margin-top: 80px; /* Відступ зверху для відокремлення від заголовка */
+            margin-top: 50px; /* Відступ зверху для відокремлення від заголовка */
+            margin-bottom: 50px;
         }
 
         .grid-item {
@@ -395,12 +399,28 @@
     <div class="container1" id="page8" style="display:none;">
         <div class="large-text">Оберіть свої спокуси:</div>
         <div class="grid-container" id="grid-container"></div>
-        <div class="button-container">
+        <div class="button-container"onclick="showPage9()">
             <p>Далі</p>
         </div>
     </div>
     
-    
+    <div class="container" id="page9" style="display:none;">
+        <div class="title1">Що Ви шукаєте? </div>
+        <div class="center-container">
+            <div class="select-container">
+                <select id="gender-select">
+                    <option value="" disabled selected hidden>Оберіть...</option>
+                    <option value="male">Без зобов'язань</option>
+                    <option value="bi">Серйозні наміри</option>
+                    <option value="lesbian">Вірт</option>
+                    <option value="gay">Все і одразу</option>
+                </select>
+            </div>
+        </div>
+        <div class="button-container"onclick="showPage10()">
+            <p>Завершити реєстрацію</p>
+        </div>
+    </div>
     
       
     <script>
@@ -440,6 +460,10 @@
         }function showPage8() {
             document.getElementById('page7').style.display = 'none';
             document.getElementById('page8').style.display = 'flex';
+        }
+        function showPage9() {
+            document.getElementById('page8').style.display = 'none';
+            document.getElementById('page9').style.display = 'flex';
         }
         // Додаємо обробник події keydown для полів вводу
         document.querySelectorAll('input').forEach(function(inputElement) {
