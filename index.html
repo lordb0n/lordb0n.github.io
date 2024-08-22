@@ -202,29 +202,29 @@
             border-radius: 10px;
         }
 
-
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr); /* Дві колонки */
+            gap: 10px; /* Відстань між елементами */
             width: 100%;
             max-width: 400px;
+            margin: 0 auto; /* Центрування сітки */
         }
 
         .grid-item {
             background-color: #e580e5;
-            border-radius: 15px;
+            border-radius: 10px;
             padding: 15px;
             position: relative;
             text-align: center;
-            font-size: 3vw;
+            font-size: 14px;
             color: white;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .grid-item .description {
             margin-top: 10px;
-            font-size: 2vw;
+            font-size: 12px;
             color: #f1e5f1;
         }
 
@@ -234,6 +234,8 @@
             height: 20px;
             cursor: pointer;
         }
+
+
 
     </style>
 </head>
@@ -369,16 +371,16 @@
     </div>
     
     <div class="container" id="page8" style="display:none;">
-        <div class="container">
-            <div class="title1">Обери свої Спокуси</div>
-            <div class="grid-container" id="grid-container">
-                <!-- Тут будуть генеруватися елементи -->
-            </div>
-            <div class="button-container">
-                <p>Далі</p>
-            </div>
+        <div class="title1">Спокуси:</div>
+        <div class="grid-container" id="grid-container">
+            <!-- Тут будуть генеруватися елементи -->
         </div>
-    </div>    
+        <div class="button-container">
+            <p>Далі</p>
+        </div>
+    </div>
+    
+      
     <script>
         function showPage2() {
             document.getElementById('page1').style.display = 'none';
@@ -439,48 +441,47 @@
         }
 
         const temptations = [
-            { name: "Обійми", description: "Дотик душі" },
-            { name: "Поцілунки", description: "Мова кохання" },
-            { name: "Масаж", description: "Магія рук" },
-            { name: "Футплей", description: "Вибирай в якому ритмі відпочивати" },
-            { name: "Іграшки", description: "Інтрументи радості" },
-            { name: "Оральний секс", description: "Ніжність губ" },
-            { name: "Домашні відео", description: "Моя власна історія" },
-            { name: "Стриптиз", description: "Танець спокуси" },
-            { name: "Фантазії", description: "Світ уяви" },
-            { name: "Брудні розмови", description: "Слова, що палять" },
-            { name: "Інтелект", description: "Розум '–' найкраща прелюдія" },
-            { name: "Секстинг", description: "Технології бажання" },
-            { name: "Фемдом", description: "Сила у витонченості" },
-            { name: "Спанкінг", description: "Удар задоволення" },
-            { name: "Домінування", description: "Я – твій господар" },
-            { name: "Підпорядкування", description: "Солодкий смак контролю" },
-            { name: "Світч", description: "Зміна ролей" },
-            { name: "Гік вайс", description: "Чарівні дивацтва" },
-            { name: "Куколд", description: "Інший погляд на задоволення" },
-            { name: "Ігри з воском", description: "Тепло пристрасті" },
-            { name: "Рольові ігри", description: "Втілення фантазій" },
-            { name: "Позаду", description: "Таємна позиція" },
-            { name: "Еджинг", description: "Мистецтво стриманості" },
-            { name: "Всліпу", description: "Темрява відкриває" },
-            { name: "Шоколад", description: "Солодка спокуса" },
-            { name: "Тату&Пірсинг", description: "Знакове тіло" },
-            { name: "Свінг", description: "Обмін емоціями" },
-            { name: "Ваніль", description: "Класика у простоті" },
-        ];
+    { name: "Обійми", description: "Невід’ємні почуття" },
+    { name: "Поцілунки", description: "Від ніжних поцілунків мурашки по тілу" },
+    { name: "Масаж", description: "Ідеальне продовження побачення" },
+    { name: "Музика", description: "Вибирай у якому ритмі відпочивати" },
+    { name: "Література", description: "Мене надихають розумні книги" },
+    { name: "Кіноманія", description: "Обожнюю фільми" },
+    { name: "Футплей", description: "Найкраща релаксація" },
+    { name: "Іграшки", description: "Додаткове задоволення" },
+    { name: "Аромати", description: "Приємні запахи підіймають настрій" },
+    { name: "Інтимний масаж", description: "Гармонія тіла і душі" },
+    { name: "Кусання", description: "Трохи кусання завжди додає гостроти" },
+    { name: "Рослинність", description: "Природність - це красиво" },
+    { name: "Домашнє відео", description: "Світло, камера, мотор!" },
+    { name: "Танці", description: "Ритмічні рухи в такт музики" },
+    { name: "Інтелект", description: "Розум - найкраща прелюдія" },
+    { name: "Фантазії", description: "Вільний політ уяви" },
+    { name: "Спонтанність", description: "Життя без планів - це завжди весело" },
+    { name: "Рольові ігри", description: "Зміна ролей - це завжди цікаво" },
+    { name: "Романтика", description: "Свічки, вино і приємна атмосфера" },
+    { name: "Ніжність", description: "Лагідні дотики, що заспокоюють" },
+    { name: "Шепіт", description: "Тихий шепіт на вухо" },
+    { name: "Природність", description: "Без зайвих прикрас" },
+    { name: "Контактний спорт", description: "Фізичний контакт в ігровій формі" },
+    { name: "Творчість", description: "Творчий підхід до всього" },
+    { name: "Екстрим", description: "Адреналін від нових відчуттів" },
+    { name: "Чуттєвість", description: "Глибоке емоційне сприйняття" },
+    { name: "Естетика", description: "Любов до краси у всіх її проявах" },
+];
 
-        const container = document.getElementById('grid-container');
+const container = document.getElementById('grid-container');
 
-        temptations.forEach(temptation => {
-            const item = document.createElement('div');
-            item.className = 'grid-item';
-            item.innerHTML = `
-                ${temptation.name}
-                <div class="description">${temptation.description}</div>
-                <input type="checkbox">
-            `;
-            container.appendChild(item);
-        });
+temptations.forEach(temptation => {
+    const item = document.createElement('div');
+    item.className = 'grid-item';
+    item.innerHTML = `
+        ${temptation.name}
+        <div class="description">${temptation.description}</div>
+        <input type="checkbox">
+    `;
+    container.appendChild(item);
+});
     </script>
 </body>
 
