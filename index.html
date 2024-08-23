@@ -491,6 +491,45 @@
                 grid-template-columns: repeat(2, 1fr); /* Змінюємо на 2 колонки для мобільних */
             }
         }
+        /* Загальні стилі для кнопок */
+        .button-bar {
+            display: none; /* Ховаємо панель кнопок за замовчуванням */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1cm; /* Висота лінії кнопок */
+            display: flex;
+        }
+
+        .button {
+            flex: 1; /* Всі кнопки займають рівну частину */
+            border: none;
+            cursor: pointer;
+            height: 100%;
+        }
+
+        /* Розмальовуємо кожну кнопку у свій колір */
+        .button.blue {
+            background-color: blue;
+        }
+
+        .button.red {
+            background-color: red;
+        }
+
+        .button.green {
+            background-color: green;
+        }
+
+        .button.brown {
+            background-color: brown;
+        }
+
+        .button.yellow {
+            background-color: yellow;
+        }
+
     </style>
 </head>
 
@@ -859,6 +898,14 @@
                     <button id="change-info">Змінити інформацію</button>
                 </div>
             </div>
+            <div class="button-bar" id="buttonBar">
+                <button class="button blue"></button>
+                <button class="button red"></button>
+                <button class="button green"></button>
+                <button class="button brown"></button>
+                <button class="button yellow"></button>
+            </div>
+            
     <script>
         let selectedTemptations = [];
         function showPage2() {
@@ -1149,6 +1196,27 @@
             avatarImg.style.display = 'none';
             avatarContainer.querySelector('p').style.display = 'block';
         }
+        // Функція, яка показує панель кнопок тільки на 10-й сторінці і далі
+        function showButtonBar() {
+            const currentPageId = document.querySelector('.container').id;
+            const buttonBar = document.getElementById('buttonBar');
+
+            if (currentPageId === 'page10' || currentPageId.startsWith('page')) {
+                buttonBar.style.display = 'flex'; // Показуємо панель кнопок
+            } else {
+                buttonBar.style.display = 'none'; // Ховаємо панель кнопок
+            }
+        }
+
+        // Викликаємо функцію, коли змінюється сторінка
+        function showPage10() {
+            document.getElementById('page9').style.display = 'none';
+            document.getElementById('page10').style.display = 'flex';
+            showButtonBar(); // Викликаємо функцію для показу панелі кнопок
+        }
+
+        // Аналогічно для сторінок далі (якщо є)
+
     </script>
 </body>
 
