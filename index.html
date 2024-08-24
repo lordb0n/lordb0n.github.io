@@ -1,1238 +1,324 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GORA</title>
+    <title>Меню та Кнопки</title>
     <style>
-        body,
-        html {
+        body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #d63dba;
-            font-family: Arial, sans-serif;
-            box-sizing: border-box;
-            overflow-x: hidden;
-        }
-
-        .container {
             width: 100%;
             height: 100%;
-            max-width: 150vw;
-            background-color: #d63dba;
+            font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+            background-color: #e6e6fa;
+        }
+
+        /* Верхнє меню */
+        .top-menu {
+            background-color: #9400D3;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-end;
             align-items: center;
-            padding: 0 20px;
+            position: relative;
         }
 
-        .title {
-            font-size: 10vw;
-            color: black;
-            margin-top: 5%;
-            text-align: center;
-            width: 100%;
-        }
-
-        .title1 {
-            font-size: 6vw;
-            color: black;
-            margin-top: 5%;
-            text-align: center;
-            width: 100%;
-        }
-
-        .center-description {
-            font-size: 5vw;
-            color: black;
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            width: 100%;
-        }
-
-        .button-container {
-            width: 100%;
-            padding: 15px;
-            background-color: #e580e5;
-            text-align: center;
+        .menu-icon {
+            width: 40px;
+            height: 40px;
+            background-color: yellow;
+            border-radius: 50%;
             cursor: pointer;
-            position: fixed; /* Фіксуємо кнопку внизу */
-            bottom: 0;
-            left: 0;
-            right: 0;
-            border-radius: 0;
-        }
-
-        .button-container:hover {
-            background-color: #e580e5;
-        }
-
-        .button-container p {
-            font-size: 5vw;
-            color: black;
-            margin: 0;
-            width: 90%; /* Фіксована ширина кнопки */
-            text-align: center;
-        }
-
-
-        .input-container {
-            width: 400px;
-            text-align: center;
-            position: relative;
-            margin-bottom: 50px; /* Відстань між текстом і інпутом */
-        }
-
-        .input-container input,
-        .select-container select {
-            width: 100%;
-            padding: 15px;
-            border-radius: 20px;
-            border: none;
-            font-size: 4.5vw;
-            background-color: #e580e5;
-            color: white;
-            text-align: center;
-            outline: none;
-            box-sizing: border-box;
-        }
-
-        .input-container input::placeholder {
-            color: transparent;
-        }
-
-        .input-placeholder {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            opacity: 0.7;
-            pointer-events: none;
-            font-size: 4.5vw;
-            transition: opacity 0.1s;
-        }
-
-        .input-container input:focus + .input-placeholder,
-        .input-container input:not(:placeholder-shown) + .input-placeholder {
-            opacity: 0;
-        }
-
-        .select-container {
-            width: 400px;
-            text-align: center;
-            position: relative;
-            margin-top: +20px;
-            margin-bottom: 100px; /* Відстань між текстом і інпутом */
-        }
-
-
-        .select-container select {
-            appearance: none;
-            background-color: #e580e5;
-            color: white;
-        }
-
-        .select-placeholder {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            right: 0;
-            color: white;
-            opacity: 0.7;
-            pointer-events: none;
-            font-size: 4.5vw;
-            text-align: center;
-        }
-
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 10px;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .photo-grid div {
-            background-color: #d67cd6;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 10px;
-            border: 2px solid black;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            width: 100px;
-            height: 150px;
+            margin-right: 10px;
         }
 
-        .photo-grid div::before {
-            content: "+";
+        .menu-icon img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Заголовок "Пошук" */
+        .search-title {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
             font-size: 24px;
-            color: black;
+            font-weight: bold;
+        }
+
+        /* Бокове меню */
+        .side-menu {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s;
-        }
-
-        .photo-grid div.filled::before {
-            content: none;
-        }
-
-        .photo-grid input[type="file"] {
-            position: absolute;
-            opacity: 0;
-            width: 100%;
+            left: 0;
+            top: 0;
+            width: 200px;
             height: 100%;
-            cursor: pointer;
+            background-color: #800080;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
         }
 
-        .photo-grid img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
+        .side-menu.open {
+            transform: translateX(0);
         }
 
-        .upper-section {
-            height: 50vh; /* Це забезпечує, що верхня частина займатиме половину висоти екрана */
+        .side-menu a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            border-bottom: 1px solid #333;
+        }
+
+        .side-menu a:hover {
+            background-color: #9932CC;
+        }
+
+        /* Основний контент */
+        .content {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #d3d3d3;
+            position: relative;
         }
 
-        .large-text {
-            font-size: 6vw; /* Збільшуємо розмір тексту */
-            color: black;
-            text-align: center;
-            margin-bottom: 2vh; /* Відступ між текстом і спокусами */
-            margin-top: 5vh; /* Відступ від верхньої частини екрана */
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+        .photo {
             width: 100%;
-            max-width: 5000px; /* Максимальна ширина контейнера */
-            margin-top: 50px; /* Відступ зверху для відокремлення від заголовка */
-            margin-bottom: 50px;
+            height: 100%;
+            background-color: grey;
+            position: relative;
         }
 
-        .grid-item {
-            background-color: #e580e5;
-            border-radius: 15px;
-            padding: 20px;
+        /* Місце для фото 16:9 */
+        .photo-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            max-width: 300px;
+            padding-top: 95%; /* Співвідношення 16:9 */
+            background-color: black;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .profile-info {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
             text-align: center;
-            font-size: 4vw;
-            color: rgb(0, 0, 0);
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            width: 63%;
         }
 
-        .grid-item .description {
-            margin-top: 10px;
-            font-size: 3vw;
-            color: #f1e5f1;
+        .profile-info h3, .profile-info p {
+            margin: 5px 0;
         }
 
-        .grid-item input[type="checkbox"] {
-            margin-top: 10px;
+        /* Нижня панель кнопок */
+        .button-bar {
+            display: flex;
+            height: 60px;
+            background-color: #333;
+        }
+
+        .button-bar button {
+            flex: 1;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+        }
+
+        .button-bar button:nth-child(1) { background-color: blue; }
+        .button-bar button:nth-child(2) { background-color: red; }
+        .button-bar button:nth-child(3) { background-color: green; }
+        .button-bar button:nth-child(4) { background-color: brown; }
+        .button-bar button:nth-child(5) { background-color: yellow; color: black; }
+
+        .icon-button {
+            position: absolute;
+            bottom: 10px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ff6347;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            text-align: center;
+        }
+
+        .like-button {
+            left: 10%;
+            background-color: green;
+        }
+
+        .dislike-button {
+            right: 10%;
+            background-color: red;
+        }
+
+        /* Додаткові кнопки між лайком і дизлайком */
+        .circle-buttons {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .circle-button {
+            background-color: #ff69b4;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Розміри для маленьких та великих кнопок */
+        .circle-button.small {
             width: 30px;
             height: 30px;
-            cursor: pointer;
-        }
-        .container1 {
-            width: 100%;
-            height: 100%;
-            max-width: 150vw;
-            background-color: #d63dba;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start; /* Починаємо з верхньої частини */
-            align-items: center;
-            padding: 0 20px;
-        }
-        .profile-card {
-            width: 100vw;
-            height: 100vh;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            color: black;
-            padding: 1%;
-            overflow-y: auto;
         }
 
-        .amount {
-            font-size: 2.5vw;
-            font-weight: bold;
-            text-align: left;
-            width: 100%;
-            margin-bottom: 5px;
+        .circle-button.large {
+            width: 40px;
+            height: 40px;
         }
 
-        .avatar {
-            width: 350px;
-            height: 350px;
-            min-width: 1px; /* Мінімальна ширина */
-            min-height: 115px;
-            border: 3px solid black;
-            border-radius: 50%;
-            background-color: white;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            overflow: hidden;
-            margin-bottom: 3px;
+        /* Меню з пошуком */
+        .search-menu {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 300px;
+            background-color: #9932CC;
+            border-radius: 10px;
+            padding: 10px;
+            color: white;
+            font-size: 16px;
+            display: none; /* Спочатку приховане */
         }
 
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-            border-radius: 50%; /* Робимо зображення круглим */
-            display: block; /* Завжди показувати зображення */
+        .search-menu.open {
+            display: block;
         }
 
-        .avatar p {
-            font-size: 3vw;
-            color: grey;
-            text-align: center;
+        .search-menu h3 {
+            margin-top: 0;
         }
 
-        .info p {
+        .search-menu ul {
+            list-style: none;
+            padding: 0;
             margin: 0;
-            font-size: 2vw;
-            text-align: center;
-            margin-bottom: 3px;
         }
 
-        .details {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 1%;
-            box-sizing: border-box;
-            margin-bottom: 5px;
+        .search-menu ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid white;
         }
 
-        .details p {
-            margin: 5px 0;
-            font-size: 2vw;
+        .search-menu ul li:last-child {
+            border-bottom: none;
         }
-
-        #seeking,
-        #name,
-        #age {
-            width: 100%;
-            padding: 3px;
-            border-radius: 5px;
-            border: 1px solid rgb(0, 0, 0);
-            font-size: 3vw;
-            margin-bottom: 7px;
-        }
-
-        .temptations {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .checkbox-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 8px;
-            cursor: pointer;
-            font-size: 1.5vw;
-            user-select: none;
-            background-color: #e580e5;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .checkbox-container .description {
-            color: white;
-            font-size: 1.2vw;
-        }
-
-        .checkbox-container input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .checkmark {
-            margin-top: 5px;
-            height: 25px;
-            width: 25px;
-            background-color: transparent;
-            border-radius: 5px;
-            border: 2px solid #555;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .checkbox-container input:checked ~ .checkmark {
-            background-color: rgb(81, 82, 79);
-        }
-
-        .checkbox-container input:checked ~ .checkmark:after {
-            display: block;
-        }
-
-        .checkbox-container .checkmark:after {
-            content: "";
-            display: none;
-            width: 7px;
-            height: 14px;
-            border: solid white;
-            border-width: 0 3px 3px 0;
-            transform: rotate(45deg);
-        }
-
-        #bio {
-            width: 100%;
-            height: 70px;
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid black;
-            font-size: 1.5vw;
-            box-sizing: border-box;
-            resize: none;
-            margin-top: 7px;
-        }
-
-        .context-menu {
-            display: none;
-            position: absolute;
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            padding: 10px;
-        }
-
-        .context-menu button {
-            display: block;
-            width: 100%;
-            padding: 8px;
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-            text-align: left;
-        }
-
-        .context-menu button:hover {
-            background-color: #f0f0f0;
-        }
-
-        .save-button {
-            width: 100%;
-            margin-top: 7px;
-            padding: 10px;
-            font-size: 3vw;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .amount {
-                font-size: 4vw;
-            }
-
-            .avatar {
-                width: 25vw;
-                height: 25vw;
-            }
-
-            .info p {
-                font-size: 3vw;
-            }
-
-            .info p.location {
-                font-size: 2.5vw;
-            }
-
-            .details p,
-            #seeking,
-            .checkbox-container,
-            #bio {
-                font-size: 3vw;
-            }
-
-            .checkbox-container .description {
-                font-size: 2.5vw;
-            }
-
-            .temptations {
-                grid-template-columns: repeat(2, 1fr); /* Змінюємо на 2 колонки для мобільних */
-            }
-        }
-        /* Загальні стилі для кнопок */
-       /* Загальні стилі для кнопок */
-		.button-bar {
-		    position: fixed;
-		    bottom: 0;
-		    left: 0;
-		    width: 100%;
-		    height: 1cm; /* Висота лінії кнопок */
-		    display: flex;
-		    z-index: 9999; /* Встановлюємо панель кнопок на найвищий рівень */
-		    background-color: transparent; /* Фон панелі прозорий, щоб нічого не перекривати */
-		    margin: 0;
-		    padding: 0;
-		}
-		
-		.button {
-		    flex: 1; /* Всі кнопки займають рівну частину */
-		    border: none;
-		    cursor: pointer;
-		    height: 100%;
-		}
-		
-		/* Розмальовуємо кожну кнопку у свій колір */
-		.button.blue {
-		    background-color: blue;
-		}
-		
-		.button.red {
-		    background-color: red;
-		}
-		
-		.button.green {
-		    background-color: green;
-		}
-		
-		.button.brown {
-		    background-color: brown;
-		}
-		
-		.button.yellow {
-		    background-color: yellow;
-		}
-		
-		/* Встановлюємо основний контейнер на висоту вище кнопок */
-		.container,
-		.container1 {
-		    padding-bottom: 1cm; /* Відступ знизу, щоб контент не заходив під кнопки */
-		    box-sizing: border-box;
-		    margin: 0;
-		    background-color: #d63dba; /* Колір фону для основного контенту */
-		    position: relative;
-		    z-index: 1;
-		}
 
     </style>
 </head>
 
 <body>
-    <div class="container" id="page1">
-        <div class="title">GORA</div>
-        <div class="center-description">Бот для Ваших потаємних бажань</div>
-        <div class="button-container" onclick="showPage2()">
-            <p>Створити профіль</p>
+
+    <!-- Верхнє меню -->
+    <div class="top-menu">
+        <div class="search-title">Пошук</div>
+        <div class="menu-icon" onclick="toggleSearchMenu()">menu</div>
+    </div>
+
+
+    <!-- Основний контент -->
+    <div class="content">
+        <div class="photo">
+            <div class="photo-container">
+                <!-- Місце для фото -->
+            </div>
+        </div>
+        <div class="profile-info">
+            <h3>Ім'я, Вік</h3>
+            <p>Короткий опис...</p>
+        </div>
+        <div class="icon-button like-button">👍</div>
+        <div class="icon-button dislike-button">👎</div>
+
+        <!-- Додаткові кнопки між лайком і дизлайком -->
+        <div class="circle-buttons">
+            <div class="circle-button small"></div>
+            <div class="circle-button large"></div>
+            <div class="circle-button small"></div>
+            <div class="circle-button large"></div>
+            <div class="circle-button small"></div>
+        </div>
+
+        <!-- Меню з пошуком -->
+        <div id="searchMenu" class="search-menu">
+            <h3>Пошук</h3>
+            <ul>
+                <li>5 км Поблизу</li>
+                <li>10 км Майже поряд</li>
+                <li>25 км Далеченько</li>
+                <li>50 км Година їзди</li>
+                <li>>100 км Всесвіт</li>
+                <li>Київ</li>
+                <li>Харків</li>
+                <li>Дніпро</li>
+                <li>Львів</li>
+            </ul>
         </div>
     </div>
 
-    <div class="container" id="page2" style="display:none;">
-        <div class="title1">Давай знайомитися</div>
-        <div class="center-container">
-            <div class="center-description">Як тебе звуть?</div>
-            <div class="input-container">
-                <input type="text" id="name-input" placeholder=" " onfocus="this.placeholder = ''" onblur="this.placeholder = ' '">
-                <div class="input-placeholder">Введіть своє ім'я</div>
-            </div>
-        </div>
-        <div class="button-container" onclick="showPage3()">
-            <p>Далі</p>
-        </div>
+    <!-- Нижня панель кнопок -->
+    <div class="button-bar">
+        <button>Home</button>
+        <button>Search</button>
+        <button>Profile</button>
+        <button>Settings</button>
+        <button>More</button>
     </div>
 
-    <div class="container" id="page3" style="display:none;">
-        <div class="center-container">
-            <div class="title1">Скільки тобі років?</div>
-            <div class="input-container">
-                <input type="number" id="age-input" placeholder=" " min="1" max="120" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onfocus="this.placeholder = ''" onblur="this.placeholder = ' '">
-                <div class="input-placeholder">Введіть свій вік</div>
-            </div>
-        </div>
-        <div class="button-container" onclick="showPage4()">
-            <p>Далі</p>
-        </div>
-    </div>      
-
-    <div class="container" id="page4" style="display:none;">
-        <div class="title1">Обери свою стать</div>
-        <div class="center-container">
-            <div class="select-container">
-                <select id="gender-select">
-                    <option value="" disabled selected hidden>Оберіть...</option>
-                    <option value="male">Чоловік</option>
-                    <option value="female">Жінка</option>
-                    <option value="couple">Пара</option>
-                    <option value="other">Інше</option>
-                </select>
-            </div>
-        </div>
-        <div class="button-container"onclick="showPage5()">
-            <p>Далі</p>
-        </div>
-    </div>
-    
-    <div class="container" id="page5" style="display:none;">
-        <div class="title1">Оберіть Вашу орієнтацію</div>
-        <div class="center-container">
-            <div class="select-container">
-                <select id="gender-select">
-                    <option value="" disabled selected hidden>Оберіть...</option>
-                    <option value="male">Гетеро</option>
-                    <option value="bi">Бі</option>
-                    <option value="lesbian">Лесбі</option>
-                    <option value="gay">Гей</option>
-                    <option value="other">Інше</option>
-                </select>
-            </div>
-        </div>
-        <div class="button-container"onclick="showPage6()">
-            <p>Далі</p>
-        </div>
-    </div>
-
-    <div class="container" id="page6" style="display:none;">
-        <div class="title1">Хто Вам цікавий?</div>
-        <div class="center-container">
-            <div class="select-container">
-                <select id="gender-select">
-                    <option value="" disabled selected hidden>Оберіть...</option>
-                    <option value="male">Чоловіки</option>
-                    <option value="bi">Жінки</option>
-                    <option value="lesbian">Пари</option>
-                    <option value="gay">Бі дівчата</option>
-                    <option value="other">Бі хлопці</option>
-                    <option value="other">Бі пара</option>
-                </select>
-            </div>
-        </div>
-        <div class="button-container"onclick="showPage7()">
-            <p>Далі</p>
-        </div>
-    </div>
-
-    <div class="container" id="page7" style="display:none;">
-        <div class="container">
-            <div class="photo-grid">
-                <div>
-                    <input type="file" accept="image/*" onchange="loadFile(event, 0)">
-                    <img id="output0" style="display:none;">
-                </div>
-                <div>
-                    <input type="file" accept="image/*" onchange="loadFile(event, 1)">
-                    <img id="output1" style="display:none;">
-                </div>
-                <div>
-                    <input type="file" accept="image/*" onchange="loadFile(event, 2)">
-                    <img id="output2" style="display:none;">
-                </div>
-                <div>
-                    <input type="file" accept="image/*" onchange="loadFile(event, 3)">
-                    <img id="output3" style="display:none;">
-                </div>
-                <div>
-                    <input type="file" accept="image/*" onchange="loadFile(event, 4)">
-                    <img id="output4" style="display:none;">
-                </div>
-                <div>
-                    <input type="file" accept="image/*" onchange="loadFile(event, 5)">
-                    <img id="output5" style="display:none;">
-                </div>
-            </div>
-            <div class="title1">Додайте свої найкращі фото</div>
-            <br>(мінімум 2 фото)
-            </div>
-            <div class="button-container"onclick="showPage8()">
-                <p>Далі</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container1" id="page8" style="display:none;">
-        <div class="large-text">Оберіть свої спокуси:</div>
-        <div class="grid-container" id="grid-container"></div>
-        <div class="button-container"onclick="showPage9()">
-            <p>Далі</p>
-        </div>
-    </div>
-    
-    <div class="container" id="page9" style="display:none;">
-        <div class="title1">Що Ви шукаєте? </div>
-        <div class="center-container">
-            <div class="select-container">
-                <select id="gender-select">
-                    <option value="" disabled selected hidden>Оберіть...</option>
-                    <option value="male">Без зобов'язань</option>
-                    <option value="bi">Серйозні наміри</option>
-                    <option value="lesbian">Вірт</option>
-                    <option value="gay">Все і одразу</option>
-                </select>
-            </div>
-        </div>
-        <div class="button-container"onclick="showPage10()">
-            <p>Завершити реєстрацію</p>
-        </div>
-    </div>
-    
-    <div class="container" id="page10" style="display:none;">
-        <div class="profile-card">
-            <div class="amount">50,000 GORA Token</div>
-            <div id="avatar-container" class="avatar">
-                <img id="avatar" src="" alt="Ваше фото">
-                <p>Ваше фото</p>
-            </div>
-            <div class="info" >
-                <p>Дарина , 21</p>
-            </div>
-            <div class="details">
-                <p>БІО:</p>
-                <textarea id="bio" maxlength="300" placeholder="Введіть свою біографію (до 300 символів)"></textarea>
-            </div>
-
-    
-            <div class="details">
-                <p>Шукаю:</p>
-                <select id="seeking">
-                    <option value="no-strings">Без зобов’язань</option>
-                    <option value="serious">Серйозні наміри</option>
-                    <option value="virt">Вірт</option>
-                    <option value="ethical-nonmonogamy">Етична немоногамія</option>
-                    <option value="everything">Все і одразу</option>
-                </select>
-            </div>
-    
-            <div class="details">
-                <p>Спокуси:</p>
-                    <div class="temptations">
-                        <label class="checkbox-container">
-                            Обійми
-                            <span class="description">Дотик душі</span>
-                            <input type="checkbox" name="temptations" value="hugs">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Поцілунки
-                            <span class="description">Мова кохання</span>
-                            <input type="checkbox" name="temptations" value="kisses">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Масаж
-                            <span class="description">Магія рук</span>
-                            <input type="checkbox" name="temptations" value="massage">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Футплей
-                            <span class="description">Ніжна гра</span>
-                            <input type="checkbox" name="temptations" value="music">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Іграшки
-                            <span class="description">Інструменти радості</span>
-                            <input type="checkbox" name="temptations" value="literature">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Оральний секс
-                            <span class="description">Ніжність губ</span>
-                            <input type="checkbox" name="temptations" value="cinemania">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Домашні відео
-                            <span class="description">Танець спокуси</span>
-                            <input type="checkbox" name="temptations" value="footplay">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Фантазії
-                            <span class="description">Світ уяви</span>
-                            <input type="checkbox" name="temptations" value="toys">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Брудні розмови
-                            <span class="description">Слова, що палять</span>
-                            <input type="checkbox" name="temptations" value="aromas">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Інтелект
-                            <span class="description">Розум – найкраща прелюдія</span>
-                            <input type="checkbox" name="temptations" value="oral">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Секстинг 
-                            <span class="description">Технології бажання</span>
-                            <input type="checkbox" name="temptations" value="biting">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Фемдом 
-                            <span class="description">Сила у витонченості</span>
-                            <input type="checkbox" name="temptations" value="bodyhair">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Спанкінг
-                            <span class="description">Удар задоволення</span>
-                            <input type="checkbox" name="temptations" value="homevideos">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Домінування
-                            <span class="description">Я – твій господар</span>
-                            <input type="checkbox" name="temptations" value="striptease">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Нехай дивляться
-                            <span class="description">Хочу щоб за нами спостерігали</span>
-                            <input type="checkbox" name="temptations" value="watching">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Підпорядкування
-                            <span class="description">Солодкий смак контролю</span>
-                            <input type="checkbox" name="temptations" value="fantasies">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Світч
-                            <span class="description">Зміна ролей</span>
-                            <input type="checkbox" name="temptations" value="dirtytalk">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Гік вайс
-                            <span class="description">Чарівні дивацтва</span>
-                            <input type="checkbox" name="temptations" value="intellect">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Куколд
-                            <span class="description">Інший погляд на задоволення</span>
-                            <input type="checkbox" name="temptations" value="sexting">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Ігри з воском
-                            <span class="description">Тепло пристрасті</span>
-                            <input type="checkbox" name="temptations" value="breakfast">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Рольові ігри
-                            <span class="description">Втілення фантазій</span>
-                            <input type="checkbox" name="temptations" value="hotel">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Позаду
-                            <span class="description">Таємна позиція</span>
-                            <input type="checkbox" name="temptations" value="feminism">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Еджинг
-                            <span class="description">Мистецтво стриманості</span>
-                            <input type="checkbox" name="temptations" value="spanking">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Всліпу
-                            <span class="description">Темрява відкриває</span>
-                            <input type="checkbox" name="temptations" value="domination">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Шоколад
-                            <span class="description">Солодка спокуса</span>
-                            <input type="checkbox" name="temptations" value="submission">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Тату&Пірсинг 
-                            <span class="description">Знакове тіло</span>
-                            <input type="checkbox" name="temptations" value="switch">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Свінг 
-                            <span class="description">Обмін емоціями</span>
-                            <input type="checkbox" name="temptations" value="leather">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="checkbox-container">
-                            Ваніль 
-                            <span class="description">Класика у простоті</span>
-                            <input type="checkbox" name="temptations" value="techno">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                </div>                
-                <button id="save-profile" class="save-button">Зберегти</button>
-        
-                <div id="context-menu" class="context-menu">
-                    <button id="change-photo">Змінити фото</button>
-                    <button id="copy-photo">Скопіювати фото</button>
-                    <button id="delete-photo">Видалити фото</button>
-                    <button id="change-info">Змінити інформацію</button>
-                </div>
-            </div>
-            <div class="button-bar" id="buttonBar">
-                <button class="button blue"></button>
-                <button class="button red"></button>
-                <button class="button green"></button>
-                <button class="button brown"></button>
-                <button class="button yellow"></button>
-            </div>
-            
     <script>
-        let selectedTemptations = [];
-        function showPage2() {
-            document.getElementById('page1').style.display = 'none';
-            document.getElementById('page2').style.display = 'flex';
+        function toggleMenu() {
+            const menu = document.getElementById('sideMenu');
+            menu.classList.toggle('open');
         }
 
-        function showPage3() {
-            document.getElementById('page2').style.display = 'none';
-            document.getElementById('page3').style.display = 'flex';
+        function toggleSearchMenu() {
+            const searchMenu = document.getElementById('searchMenu');
+            searchMenu.classList.toggle('open');
         }
-
-        function showPage4() {
-            document.getElementById('page3').style.display = 'none';
-            document.getElementById('page4').style.display = 'flex';
-        }
-    
-        function showPage5() {
-            document.getElementById('page4').style.display = 'none';
-            document.getElementById('page5').style.display = 'flex';
-        }
-        
-        function showPage6() {
-            document.getElementById('page5').style.display = 'none';
-            document.getElementById('page6').style.display = 'flex';
-        }
-        
-        function showPage7() {
-            document.getElementById('page6').style.display = 'none';
-            document.getElementById('page7').style.display = 'flex';
-        }
-        function showPage7() {
-            document.getElementById('page6').style.display = 'none';
-            document.getElementById('page7').style.display = 'flex';
-        
-        }function showPage8() {
-            document.getElementById('page7').style.display = 'none';
-            document.getElementById('page8').style.display = 'flex';
-        }
-        function showPage9() {
-            document.getElementById('page8').style.display = 'none';
-            document.getElementById('page9').style.display = 'flex';
-        }
-        function showPage10() {
-            document.getElementById('page9').style.display = 'none';
-            document.getElementById('page10').style.display = 'flex';
-        }
-        // Додаємо обробник події keydown для полів вводу
-        document.querySelectorAll('input').forEach(function(inputElement) {
-            inputElement.addEventListener('keydown', function(event) {
-                if (event.key === 'Enter') {  // Перевіряємо, чи натиснута клавіша "Enter"
-                    event.preventDefault();   // Запобігаємо стандартній дії
-                    inputElement.blur();      // Знімаємо фокус з поля вводу, що закриває клавіатуру
-                }
-            });
-        });
-
-        function loadFile(event, index) {
-            const output = document.getElementById('output' + index);
-            const container = output.parentElement;
-
-            output.src = URL.createObjectURL(event.target.files[0]);
-            output.style.display = 'block';
-
-            // Додаємо клас filled, щоб прибрати плюсик
-            container.classList.add('filled');
-        }
-
-        function saveSelectedTemptations() {
-            selectedTemptations = [];
-            const checkboxes = document.querySelectorAll('#page8 .grid-item input[type="checkbox"]');
-            checkboxes.forEach((checkbox, index) => {
-                if (checkbox.checked) {
-                    const name = checkbox.closest('.grid-item').querySelector('p').innerText;
-                    const description = checkbox.closest('.grid-item').querySelector('.description').innerText;
-                    selectedTemptations.push({ name, description });
-                }
-            });
-        }
-
-        // Функция для отображения выбранных спокус на 10 странице
-        function displaySelectedTemptations() {
-            const container = document.querySelector('#page10 .details .grid-container');
-            container.innerHTML = ''; // Очищаем контейнер перед добавлением
-            selectedTemptations.forEach(temptation => {
-                const item = document.createElement('div');
-                item.className = 'grid-item';
-                item.innerHTML = `
-                    <p>${temptation.name}</p>
-                    <div class="description">${temptation.description}</div>
-                `;
-                container.appendChild(item);
-            });
-        }
-
-        const temptations = [
-            { name: "Обійми", description: "Дотик душі" },
-            { name: "Поцілунки", description: "Мова кохання" },
-            { name: "Масаж", description: "Магія рук" },
-            { name: "Футплей", description: "Вибирай в якому ритмі відпочивати" },
-            { name: "Іграшки", description: "Інтрументи радості" },
-            { name: "Оральний секс", description: "Ніжність губ" },
-            { name: "Домашні відео", description: "Моя власна історія" },
-            { name: "Стриптиз", description: "Танець спокуси" },
-            { name: "Фантазії", description: "Світ уяви" },
-            { name: "Брудні розмови", description: "Слова, що палять" },
-            { name: "Інтелект", description: "Розум '–' найкраща прелюдія" },
-            { name: "Секстинг", description: "Технології бажання" },
-            { name: "Фемдом", description: "Сила у витонченості" },
-            { name: "Спанкінг", description: "Удар задоволення" },
-            { name: "Домінування", description: "Я – твій господар" },
-            { name: "Підпорядкування", description: "Солодкий смак контролю" },
-            { name: "Світч", description: "Зміна ролей" },
-            { name: "Гік вайс", description: "Чарівні дивацтва" },
-            { name: "Куколд", description: "Інший погляд на задоволення" },
-            { name: "Ігри з воском", description: "Тепло пристрасті" },
-            { name: "Рольові ігри", description: "Втілення фантазій" },
-            { name: "Позаду", description: "Таємна позиція" },
-            { name: "Еджинг", description: "Мистецтво стриманості" },
-            { name: "Всліпу", description: "Темрява відкриває" },
-            { name: "Шоколад", description: "Солодка спокуса" },
-            { name: "Тату&Пірсинг", description: "Знакове тіло" },
-            { name: "Свінг", description: "Обмін емоціями" },
-            { name: "Ваніль", description: "Класика у простоті" },
-        ];
-
-        const container = document.getElementById('grid-container');
-
-        temptations.forEach(temptation => {
-            const item = document.createElement('div');
-            item.className = 'grid-item';
-            item.innerHTML = `
-                ${temptation.name}
-                <div class="description">${temptation.description}</div>
-                <input type="checkbox">
-            `;
-            container.appendChild(item);
-        });
-
-        const avatarContainer = document.getElementById('avatar-container');
-        const avatarImg = document.getElementById('avatar');
-        const contextMenu = document.getElementById('context-menu');
-        const nameAgeContainer = document.getElementById('name-age-container');
-        const saveProfileButton = document.getElementById('save-profile');
-
-        avatarContainer.addEventListener('click', () => {
-            if (!avatarImg.src || avatarImg.src === window.location.href) {
-                uploadPhoto();
-            } else {
-                showPhoto();
-            }
-        });
-
-        avatarContainer.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-            showContextMenu(e.clientX, e.clientY);
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!contextMenu.contains(e.target)) {
-                contextMenu.style.display = 'none';
-            }
-        });
-
-        document.getElementById('change-photo').addEventListener('click', () => {
-            contextMenu.style.display = 'none';
-            uploadPhoto();
-        });
-
-        document.getElementById('copy-photo').addEventListener('click', () => {
-            contextMenu.style.display = 'none';
-            copyPhoto();
-        });
-
-        document.getElementById('delete-photo').addEventListener('click', () => {
-            contextMenu.style.display = 'none';
-            deletePhoto();
-        });
-
-        document.getElementById('change-info').addEventListener('click', () => {
-            contextMenu.style.display = 'none';
-            document.getElementById('name').style.display = 'block';
-            document.getElementById('age').style.display = 'block';
-            document.getElementById('name-container').style.display = 'block';
-            document.getElementById('age-container').style.display = 'block';
-            saveProfileButton.style.display = 'block';
-        });
-
-        saveProfileButton.addEventListener('click', () => {
-            const name = document.getElementById('name').value;
-            const age = document.getElementById('age').value;
-            if (name && age) {
-                nameAgeContainer.innerHTML = `<p>${name}, ${age}</p>`;
-                document.getElementById('name').style.display = 'none';
-                document.getElementById('age').style.display = 'none';
-                document.getElementById('name-container').style.display = 'none';
-                document.getElementById('age-container').style.display = 'none';
-                saveProfileButton.style.display = 'none';
-            }
-        });
-       
-        document.addEventListener('DOMContentLoaded', function() {
-            const avatarImg = document.getElementById('avatar');
-            const avatarContainer = document.getElementById('avatar-container');
-            
-            // Ініціалізуємо зображення з URL
-            const initialAvatarUrl = 'https://ukr.media/static/ba/aimg/4/1/0/410924_3.jpg';
-            avatarImg.src = initialAvatarUrl;
-            avatarImg.style.display = 'block';
-            avatarContainer.querySelector('p').style.display = 'none';
-        });
-
-        function uploadPhoto() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = (e) => {
-                const file = e.target.files[0];
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    avatarImg.src = event.target.result;
-                    avatarImg.style.display = 'block';
-                    avatarContainer.querySelector('p').style.display = 'none';
-                };
-                reader.readAsDataURL(file);
-            };
-            input.click();
-        }
-
-        function showPhoto() {
-            const overlay = document.createElement('div');
-            overlay.style.position = 'fixed';
-            overlay.style.top = '0';
-            overlay.style.left = '0';
-            overlay.style.width = '100%';
-            overlay.style.height = '100%';
-            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-            overlay.style.display = 'flex';
-            overlay.style.justifyContent = 'center';
-            overlay.style.alignItems = 'center';
-
-            overlay.style.zIndex = '1000';
-
-            const img = document.createElement('img');
-            img.src = avatarImg.src;
-            img.style.maxWidth = '90%';
-            img.style.maxHeight = '90%';
-
-            overlay.appendChild(img);
-            document.body.appendChild(overlay);
-
-            overlay.addEventListener('click', () => {
-                document.body.removeChild(overlay);
-            });
-        }
-
-        function showContextMenu(x, y) {
-            contextMenu.style.left = `${x}px`;
-            contextMenu.style.top = `${y}px`;
-            contextMenu.style.display = 'block';
-        }
-
-        function copyPhoto() {
-            const img = document.createElement('img');
-            img.src = avatarImg.src;
-            const div = document.createElement('div');
-            div.appendChild(img);
-            document.body.appendChild(div);
-
-            const range = document.createRange();
-            range.selectNode(div);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-
-            try {
-                document.execCommand('copy');
-                alert('Фото скопійовано!');
-            } catch (err) {
-                alert('Не вдалося скопіювати фото.');
-            }
-
-            window.getSelection().removeAllRanges();
-            document.body.removeChild(div);
-        }
-
-        function deletePhoto() {
-            avatarImg.src = '';
-            avatarImg.style.display = 'none';
-            avatarContainer.querySelector('p').style.display = 'block';
-        }
-        // Функція, яка показує панель кнопок тільки на 10-й сторінці і далі
-        function showButtonBar() {
-            const currentPageId = document.querySelector('.container').id;
-            const buttonBar = document.getElementById('buttonBar');
-
-            if (currentPageId === 'page10' || currentPageId.startsWith('page')) {
-                buttonBar.style.display = 'flex'; // Показуємо панель кнопок
-            } else {
-                buttonBar.style.display = 'none'; // Ховаємо панель кнопок
-            }
-        }
-
-        // Викликаємо функцію, коли змінюється сторінка
-        function showPage10() {
-            document.getElementById('page9').style.display = 'none';
-            document.getElementById('page10').style.display = 'flex';
-            showButtonBar(); // Викликаємо функцію для показу панелі кнопок
-        }
-
-        // Аналогічно для сторінок далі (якщо є)
-
     </script>
+
 </body>
 
 </html>
