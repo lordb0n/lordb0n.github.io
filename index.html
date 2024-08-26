@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GORA</title>
+    <!-- Підключення стилів -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container" id="page1">
+        <div class="title">GORA</div>
+        <div class="center-description">Бот для Ваших потаємних бажань</div>
+        <div class="button-container" onclick="showPage2()">
+            <p>Створити профіль</p>
+        </div>
+    </div>
+
+    <div class="container" id="page2" style="display:none;">
+        <div class="title1">Давай знайомитися</div>
+        <div class="center-container">
+            <div class="center-description">Як тебе звуть?</div>
+            <div class="input-container">
+                <input type="text" id="name-input" placeholder=" " onfocus="this.placeholder = ''" onblur="this.placeholder = ' '">
+                <div class="input-placeholder">Введіть своє ім'я</div>
+            </div>
+        </div>
+        <div class="button-container" onclick="showPage3()">
+            <p>Далі</p>
+        </div>
+    </div>
+
+    <div class="container" id="page3" style="display:none;">
+        <div class="center-container">
+            <div class="title1">Скільки тобі років?</div>
+            <div class="input-container">
+                <input type="number" id="age-input" placeholder=" " min="1" max="120" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onfocus="this.placeholder = ''" onblur="this.placeholder = ' '">
+                <div class="input-placeholder">Введіть свій вік</div>
+            </div>
+        </div>
+        <div class="button-container" onclick="showPage4()">
+            <p>Далі</p>
+        </div>
+    </div>      
+
+    <div class="container" id="page4" style="display:none;">
+        <div class="title1">Обери свою стать</div>
+        <div class="center-container">
+            <div class="select-container">
+                <select id="gender-select">
+                    <option value="" disabled selected hidden>Оберіть...</option>
+                    <option value="male">Чоловік</option>
+                    <option value="female">Жінка</option>
+                    <option value="couple">Пара</option>
+                    <option value="other">Інше</option>
+                </select>
+            </div>
+        </div>
+        <div class="button-container"onclick="showPage5()">
+            <p>Далі</p>
+        </div>
+    </div>
+    
+    <div class="container" id="page5" style="display:none;">
+        <div class="title1">Оберіть Вашу орієнтацію</div>
+        <div class="center-container">
+            <div class="select-container">
+                <select id="gender-select">
+                    <option value="" disabled selected hidden>Оберіть...</option>
+                    <option value="male">Гетеро</option>
+                    <option value="bi">Бі</option>
+                    <option value="lesbian">Лесбі</option>
+                    <option value="gay">Гей</option>
+                    <option value="other">Інше</option>
+                </select>
+            </div>
+        </div>
+        <div class="button-container"onclick="showPage6()">
+            <p>Далі</p>
+        </div>
+    </div>
+
+    <div class="container" id="page6" style="display:none;">
+        <div class="title1">Хто Вам цікавий?</div>
+        <div class="center-container">
+            <div class="select-container">
+                <select id="gender-select">
+                    <option value="" disabled selected hidden>Оберіть...</option>
+                    <option value="male">Чоловіки</option>
+                    <option value="bi">Жінки</option>
+                    <option value="lesbian">Пари</option>
+                    <option value="gay">Бі дівчата</option>
+                    <option value="other">Бі хлопці</option>
+                    <option value="other">Бі пара</option>
+                </select>
+            </div>
+        </div>
+        <div class="button-container"onclick="showPage7()">
+            <p>Далі</p>
+        </div>
+    </div>
+
+    <div class="container" id="page7" style="display:none;">
+        <div class="container">
+            <div class="photo-grid">
+                <div>
+                    <input type="file" accept="image/*" onchange="loadFile(event, 0)">
+                    <img id="output0" style="display:none;">
+                </div>
+                <div>
+                    <input type="file" accept="image/*" onchange="loadFile(event, 1)">
+                    <img id="output1" style="display:none;">
+                </div>
+                <div>
+                    <input type="file" accept="image/*" onchange="loadFile(event, 2)">
+                    <img id="output2" style="display:none;">
+                </div>
+                <div>
+                    <input type="file" accept="image/*" onchange="loadFile(event, 3)">
+                    <img id="output3" style="display:none;">
+                </div>
+                <div>
+                    <input type="file" accept="image/*" onchange="loadFile(event, 4)">
+                    <img id="output4" style="display:none;">
+                </div>
+                <div>
+                    <input type="file" accept="image/*" onchange="loadFile(event, 5)">
+                    <img id="output5" style="display:none;">
+                </div>
+            </div>
+            <div class="title1">Додайте свої найкращі фото</div>
+            <br>(мінімум 2 фото)
+            </div>
+            <div class="button-container"onclick="showPage8()">
+                <p>Далі</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container1" id="page8" style="display:none;">
+        <div class="large-text">Оберіть свої спокуси:</div>
+        <div class="grid-container" id="grid-container"></div>
+        <div class="button-container"onclick="showPage9()">
+            <p>Далі</p>
+        </div>
+    </div>
+    
+    <div class="container" id="page9" style="display:none;">
+        <div class="title1">Що Ви шукаєте? </div>
+        <div class="center-container">
+            <div class="select-container">
+                <select id="gender-select">
+                    <option value="" disabled selected hidden>Оберіть...</option>
+                    <option value="male">Без зобов'язань</option>
+                    <option value="bi">Серйозні наміри</option>
+                    <option value="lesbian">Вірт</option>
+                    <option value="gay">Все і одразу</option>
+                </select>
+            </div>
+        </div>
+        <div class="button-container"onclick="showPage10()">
+            <p>Завершити реєстрацію</p>
+        </div>
+    </div>
+
+    <div class="container1" id="page10" style="display:none;">
+        <div class="profile-card">
+            <div class="amount">50,000 GORA Token</div>
+            <div id="avatar-container" class="avatar">
+                <img id="avatar" src="" alt="Ваше фото">
+                <p>Ваше фото</p>
+            </div>
+            <div class="info">
+                <p>Дарина , 21</p>
+            </div>
+            <div class="details">
+                <p>БІО:</p>
+                <textarea id="bio" maxlength="300" placeholder="Введіть свою біографію (до 300 символів)"></textarea>
+            </div>
+            <div class="details">
+                <p>Шукаю:</p>
+                <select id="seeking">
+                    <option value="no-strings">Без зобов’язань</option>
+                    <option value="serious">Серйозні наміри</option>
+                    <option value="virt">Вірт</option>
+                    <option value="ethical-nonmonogamy">Етична немоногамія</option>
+                    <option value="everything">Все і одразу</option>
+                </select>
+            </div>
+    
+            <div class="details">
+                <p>Спокуси:</p>
+                    <div class="temptations">
+                        <label class="checkbox-container">
+                            Обійми
+                            <span class="description">Дотик душі</span>
+                            <input type="checkbox" name="temptations" value="hugs">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Поцілунки
+                            <span class="description">Мова кохання</span>
+                            <input type="checkbox" name="temptations" value="kisses">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Масаж
+                            <span class="description">Магія рук</span>
+                            <input type="checkbox" name="temptations" value="massage">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Футплей
+                            <span class="description">Ніжна гра</span>
+                            <input type="checkbox" name="temptations" value="music">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Іграшки
+                            <span class="description">Інструменти радості</span>
+                            <input type="checkbox" name="temptations" value="literature">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Оральний секс
+                            <span class="description">Ніжність губ</span>
+                            <input type="checkbox" name="temptations" value="cinemania">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Домашні відео
+                            <span class="description">Танець спокуси</span>
+                            <input type="checkbox" name="temptations" value="footplay">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Фантазії
+                            <span class="description">Світ уяви</span>
+                            <input type="checkbox" name="temptations" value="toys">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Брудні розмови
+                            <span class="description">Слова, що палять</span>
+                            <input type="checkbox" name="temptations" value="aromas">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Інтелект
+                            <span class="description">Розум – найкраща прелюдія</span>
+                            <input type="checkbox" name="temptations" value="oral">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Секстинг 
+                            <span class="description">Технології бажання</span>
+                            <input type="checkbox" name="temptations" value="biting">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Фемдом 
+                            <span class="description">Сила у витонченості</span>
+                            <input type="checkbox" name="temptations" value="bodyhair">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Спанкінг
+                            <span class="description">Удар задоволення</span>
+                            <input type="checkbox" name="temptations" value="homevideos">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Домінування
+                            <span class="description">Я – твій господар</span>
+                            <input type="checkbox" name="temptations" value="striptease">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Нехай дивляться
+                            <span class="description">Хочу щоб за нами спостерігали</span>
+                            <input type="checkbox" name="temptations" value="watching">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Підпорядкування
+                            <span class="description">Солодкий смак контролю</span>
+                            <input type="checkbox" name="temptations" value="fantasies">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Світч
+                            <span class="description">Зміна ролей</span>
+                            <input type="checkbox" name="temptations" value="dirtytalk">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Гік вайс
+                            <span class="description">Чарівні дивацтва</span>
+                            <input type="checkbox" name="temptations" value="intellect">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Куколд
+                            <span class="description">Інший погляд на задоволення</span>
+                            <input type="checkbox" name="temptations" value="sexting">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Ігри з воском
+                            <span class="description">Тепло пристрасті</span>
+                            <input type="checkbox" name="temptations" value="breakfast">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Рольові ігри
+                            <span class="description">Втілення фантазій</span>
+                            <input type="checkbox" name="temptations" value="hotel">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Позаду
+                            <span class="description">Таємна позиція</span>
+                            <input type="checkbox" name="temptations" value="feminism">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Еджинг
+                            <span class="description">Мистецтво стриманості</span>
+                            <input type="checkbox" name="temptations" value="spanking">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Всліпу
+                            <span class="description">Темрява відкриває</span>
+                            <input type="checkbox" name="temptations" value="domination">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Шоколад
+                            <span class="description">Солодка спокуса</span>
+                            <input type="checkbox" name="temptations" value="submission">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Тату&Пірсинг 
+                            <span class="description">Знакове тіло</span>
+                            <input type="checkbox" name="temptations" value="switch">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Свінг 
+                            <span class="description">Обмін емоціями</span>
+                            <input type="checkbox" name="temptations" value="leather">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox-container">
+                            Ваніль 
+                            <span class="description">Класика у простоті</span>
+                            <input type="checkbox" name="temptations" value="techno">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>                
+                <button id="save-profile" class="save-button">Зберегти</button>
+            <div class="button-bar" id="buttonBar">
+                <button class="button blue"></button>
+                <button class="button red"></button>
+                <button class="button green"></button>
+                <button class="button brown"></button>
+                <button class="button yellow"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Підключення скриптів -->
+    <script src="scripts.js"></script>
+</body>
+
+</html>
