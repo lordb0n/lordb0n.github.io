@@ -364,16 +364,46 @@
                     </div>
                 </div>                
                 <button id="save-profile" class="save-button">Зберегти</button>
-            <div class="button-bar" id="buttonBar">
-                <button class="button blue"></button>
-                <button class="button red"></button>
-                <button class="button green"></button>
-                <button class="button brown"></button>
-                <button class="button yellow"></button>
-            </div>
+                <div class="button-bar">
+                    <button class="button brown" onclick="goToSettings()">Налаштування</button>
+                    <button class="button yellow" onclick="goToLikedYou()">Сподобались ви</button>
+                    <button class="button green" onclick="goToSearch()">Пошук</button>
+                    <button class="button orange" onclick="goToChats()">Чати</button>
+                    <button class="button red" onclick="goToProfile()">Профіль</button>
+                </div>
         </div>
     </div>
 
+    <div class="container1" id="settingsPage" style="display: none;">
+        <div class="menu">
+            <a href="#" class="active">Загальні</a>
+            <a href="#">Акаунт</a>
+            <a href="#">Тема</a>
+            <a href="#">Мова</a>
+            <a href="#" class="active">Інформація</a>
+            <a href="#">Політика конфіденційності</a>
+            <a href="#">Правила та умови</a>
+            <a href="#">Тех підтримка</a>
+            <a href="#" class="active">Соц мережі</a>
+            <a href="#">Telegram</a>
+            <a href="#">Instagram</a>
+        </div>
+        <div class="button-bar">
+            <button class="button brown" onclick="goToSettings()">Налаштування</button>
+            <button class="button yellow" onclick="goToLikedYou()">Сподобались ви</button>
+            <button class="button green" onclick="goToSearch()">Пошук</button>
+            <button class="button orange" onclick="goToChats()">Чати</button>
+            <button class="button red" onclick="goToProfile()">Профіль</button>
+        </div>
+    </div>
+
+    <div id="content" style="display:none;">
+        <!-- Контент, який буде завантажуватися за допомогою функції loadPage -->
+    </div>
+
+
+
+    
     <!-- Підключення скриптів -->
     <script src="script.js"></script>
 </body>
