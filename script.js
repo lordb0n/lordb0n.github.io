@@ -3,6 +3,7 @@ let selectedTemptations = [];
 function showPage2() {
     document.getElementById('page1').style.display = 'none';
     document.getElementById('page2').style.display = 'flex';
+    console.log("Перехід на сторінку 2");
 }
 
 function showPage3() {
@@ -31,8 +32,9 @@ function showPage7() {
 function showPage7() {
     document.getElementById('page6').style.display = 'none';
     document.getElementById('page7').style.display = 'flex';
+}
 
-}function showPage8() {
+function showPage8() {
     document.getElementById('page7').style.display = 'none';
     document.getElementById('page8').style.display = 'flex';
 }
@@ -78,10 +80,10 @@ function saveSelectedTemptations() {
     });
 }
 
-// Функция для отображения выбранных спокус на 10 странице
+// Функція для відображення обраних спокус на 10 сторінці
 function displaySelectedTemptations() {
     const container = document.querySelector('#page10 .details .grid-container');
-    container.innerHTML = ''; // Очищаем контейнер перед добавлением
+    container.innerHTML = ''; // Очищаємо контейнер перед додаванням
     selectedTemptations.forEach(temptation => {
         const item = document.createElement('div');
         item.className = 'grid-item';
@@ -98,7 +100,7 @@ const temptations = [
     { name: "Поцілунки", description: "Мова кохання" },
     { name: "Масаж", description: "Магія рук" },
     { name: "Футплей", description: "Вибирай в якому ритмі відпочивати" },
-    { name: "Іграшки", description: "Інтрументи радості" },
+    { name: "Іграшки", description: "Інструменти радості" },
     { name: "Оральний секс", description: "Ніжність губ" },
     { name: "Домашні відео", description: "Моя власна історія" },
     { name: "Стриптиз", description: "Танець спокуси" },
@@ -202,12 +204,6 @@ saveProfileButton.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', function() {
     const avatarImg = document.getElementById('avatar');
     const avatarContainer = document.getElementById('avatar-container');
-    
-    // Ініціалізуємо зображення з URL
-    const initialAvatarUrl = 'https://ukr.media/static/ba/aimg/4/1/0/410924_3.jpg';
-    avatarImg.src = initialAvatarUrl;
-    avatarImg.style.display = 'block';
-    avatarContainer.querySelector('p').style.display = 'none';
 });
 
 function uploadPhoto() {
@@ -288,6 +284,7 @@ function deletePhoto() {
     avatarImg.style.display = 'none';
     avatarContainer.querySelector('p').style.display = 'block';
 }
+
 // Функція, яка показує панель кнопок тільки на 10-й сторінці і далі
 function showButtonBar() {
     const currentPageId = document.querySelector('.container').id;
@@ -299,5 +296,50 @@ function showButtonBar() {
         buttonBar.style.display = 'none'; // Ховаємо панель кнопок
     }
 }
+
+// Оновлена частина для налаштувань
+function loadPage(page) {
+    const pages = ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9', 'page10', 'settingsPage', 'likedYouPage', 'searchPage', 'chatsPage']; // Список всіх сторінок
+    pages.forEach(pageId => {
+        const pageElement = document.getElementById(pageId);
+        if (pageElement) {
+            pageElement.style.display = 'none'; // Ховаємо всі сторінки
+        }
+    });
+
+    const targetPage = document.getElementById(page);
+    if (targetPage) {
+        targetPage.style.display = 'block'; // Показуємо вибрану сторінку
+    }
+}
+
+
+function goToSettings() {
+    loadPage('settingsPage');
+}
+
+function goToLikedYou() {
+    loadPage('likedYouPage');
+}
+
+function goToSearch() {
+    loadPage('searchPage');
+}
+
+function goToChats() {
+    loadPage('chatsPage');
+}
+
+function goToProfile() {
+    loadPage('page10');
+}
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadPage('page1'); // Завантажуємо початкову сторінку
+});
+
+
 
 
