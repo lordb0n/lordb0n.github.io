@@ -557,10 +557,28 @@ body, html {
 .menu a.active {
     background-color: #DDA0DD;
     color: black;
+    border-radius: 8px;
+    display: block;
+    padding: 10px;
+    width: 100%; /* Займає всю ширину контейнера */
+    box-sizing: border-box; /* Враховує padding всередині ширини */
 }
 
+.title1.active {
+    background-color: #DDA0DD;
+    color: black;
+    padding: 20px;
+    width: 100%; /* Займає всю ширину контейнера */
+    box-sizing: border-box; /* Враховує padding всередині ширини */
+    text-align: left; /* Вирівнювання тексту зліва */
+    margin-top: -1px; /* Відступ знизу */
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
 .chat-container {
-    background-color: #e6b8e7;
+    background-color: #d63dba;
     width: 100%;
     max-width: 100%;
     height: 100%;
@@ -575,19 +593,32 @@ body, html {
     color: #333;
 }
 
+/* Стиль для кожного чату */
 .chat-message {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+    padding: 10px;
+    border: 2px solid #ffffff;
+    border-radius: 25px; /* Робимо овал */
+    background-color: #d63dba; /* Фон за замовчуванням */
+    transition: background-color 0.3s ease; /* Анімація плавної зміни кольору */
 }
 
-.chat-message:last-child {
-    margin-bottom: 0;
+/* Зміна фону при наведенні */
+.chat-message:hover {
+    background-color: white; /* Зміна фону на білий */
 }
 
+/* Зміна фону при натисканні */
+.chat-message:active {
+    background-color: white; /* Фон також білий при натисканні */
+}
+
+/* Стиль для аватару в чаті */
 .chat-message-avatar {
-    background-color: #ca89c4;
-    color: white;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -597,20 +628,34 @@ body, html {
     font-size: 1.5em;
     font-weight: bold;
     margin-right: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Анімація плавної зміни кольору */
 }
 
-.chat-message-text {
-    display: flex;
-    flex-direction: column;
+/* Зміна кольору тексту та аватару при наведенні */
+.chat-message:hover .chat-message-avatar,
+.chat-message:active .chat-message-avatar {
+    background-color: #333; /* Фон аватару стає темним при наведенні */
+    color: white; /* Текст стає білим при наведенні */
 }
 
+/* Стиль для тексту в чаті */
 .chat-message-text strong {
     color: #333;
     font-size: 1.2em;
     margin-bottom: 5px;
+    transition: color 0.3s ease; /* Анімація плавної зміни кольору тексту */
 }
 
 .chat-message-text span {
     color: #555;
     font-size: 1em;
+    transition: color 0.3s ease; /* Анімація плавної зміни кольору тексту */
+}
+
+/* Зміна кольору тексту при наведенні */
+.chat-message:hover .chat-message-text strong,
+.chat-message:hover .chat-message-text span,
+.chat-message:active .chat-message-text strong,
+.chat-message:active .chat-message-text span {
+    color: #333; /* Текст стає темнішим при наведенні */
 }
