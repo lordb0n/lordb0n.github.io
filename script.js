@@ -384,7 +384,9 @@ function deleteCard(button) {
     const card = button.closest('.profile-card');
     card.remove();
 }
-
+function checkUser(button) {
+    button.classList.toggle('checked');
+}
 
 
 
