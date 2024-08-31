@@ -340,6 +340,51 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPage('page1'); // Завантажуємо початкову сторінку
 });
 
+function viewPhoto(photoSrc) {
+    alert("View photo: " + photoSrc);
+}
+
+function viewProfile(userId) {
+    alert("View profile of: " + userId);
+}
+
+function toggleStar(button) {
+    const card = button.closest('.profile-card');
+    const container = card.parentNode;
+
+    if (!card.classList.contains('starred')) {
+        container.insertBefore(card, container.children[1]);
+        button.classList.add('starred');
+    } else {
+        const timestamp = parseInt(card.getAttribute('data-timestamp'));
+        let inserted = false;
+
+        for (let i = 1; i < container.children.length; i++) {
+            const currentCard = container.children[i];
+            const currentTimestamp = parseInt(currentCard.getAttribute('data-timestamp'));
+
+            if (currentTimestamp > timestamp) {
+                container.insertBefore(card, currentCard);
+                inserted = true;
+                break;
+            }
+        }
+
+        if (!inserted) {
+            container.appendChild(card);
+        }
+
+        button.classList.remove('starred');
+    }
+
+    card.classList.toggle('starred');
+}
+
+function deleteCard(button) {
+    const card = button.closest('.profile-card');
+    card.remove();
+}
+
 
 
 
