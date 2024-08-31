@@ -565,13 +565,13 @@ body, html {
 }
 
 .title1.active {
-    background-color: #DDA0DD;
     color: black;
     padding: 20px;
     width: 100%; /* Займає всю ширину контейнера */
     box-sizing: border-box; /* Враховує padding всередині ширини */
     text-align: left; /* Вирівнювання тексту зліва */
-    margin-top: -1px; /* Відступ знизу */
+    margin-bottom: -5px; /* Відступ знизу */
+    margin-top: -5px;
     font-size: 2em;
     font-weight: bold;
 }
@@ -658,4 +658,107 @@ body, html {
 .chat-message:active .chat-message-text strong,
 .chat-message:active .chat-message-text span {
     color: #333; /* Текст стає темнішим при наведенні */
+}
+
+body1 {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #d63dba, #c833b0);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    overflow-y: auto;
+}
+.container2 {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.profile-card2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.profile-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.profile-card img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 20px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    transition: transform 0.3s ease;
+}
+
+.profile-card img:hover {
+    transform: scale(1.1);
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+}
+
+.profile-info h3:hover {
+    text-decoration: underline;
+}
+
+.action-buttons {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.action-button {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.star-button i,
+.delete-button i {
+    color: #000; /* Початковий чорний колір */
+    transition: color 0.3s ease;
+}
+
+.star-button:hover i,
+.star-button.starred i {
+    color: gold; /* Колір при наведенні або активації */
+}
+
+.delete-button:hover i {
+    color: #e74c3c; /* Колір при наведенні або активації */
 }
