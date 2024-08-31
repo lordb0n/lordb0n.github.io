@@ -472,8 +472,95 @@
         </div>
     </div>     
 
-
+    <div class="menu-container" id="likedYouPage" style="display: none;">
+    <body1>    
+        <div class="container2">
+            <h2>People Who Liked You</h2>
     
+            <div class="profile-card2" data-timestamp="1">
+                <img src="user1.jpg" alt="User 1" onclick="viewPhoto('user1.jpg')">
+                <div class="profile-info">
+                    <h3 onclick="viewProfile('user1')">Анна</h3>
+                </div>
+                <div class="action-buttons">
+                    <div class="action-button star-button" onclick="toggleStar(this)">
+                        <i>&#9733;</i>
+                    </div>
+                    <div class="action-button delete-button" onclick="deleteCard(this)">
+                        <i>&#10006;</i>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="profile-card2" data-timestamp="2">
+                <img src="user2.jpg" alt="User 2" onclick="viewPhoto('user2.jpg')">
+                <div class="profile-info">
+                    <h3 onclick="viewProfile('user2')">Марина</h3>
+                </div>
+                <div class="action-buttons">
+                    <div class="action-button star-button" onclick="toggleStar(this)">
+                        <i>&#9733;</i>
+                    </div>
+                    <div class="action-button delete-button" onclick="deleteCard(this)">
+                        <i>&#10006;</i>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="profile-card2" data-timestamp="3">
+                <img src="user3.jpg" alt="User 3" onclick="viewPhoto('user3.jpg')">
+                <div class="profile-info">
+                    <h3 onclick="viewProfile('user3')">Роксолана</h3>
+                </div>
+                <div class="action-buttons">
+                    <div class="action-button star-button" onclick="toggleStar(this)">
+                        <i>&#9733;</i>
+                    </div>
+                    <div class="action-button delete-button" onclick="deleteCard(this)">
+                        <i>&#10006;</i>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="profile-card2" data-timestamp="4">
+                <img src="user4.jpg" alt="User 4" onclick="viewPhoto('user4.jpg')">
+                <div class="profile-info">
+                    <h3 onclick="viewProfile('user4')">Маша</h3>
+                </div>
+                <div class="action-buttons">
+                    <div class="action-button star-button" onclick="toggleStar(this)">
+                        <i>&#9733;</i>
+                    </div>
+                    <div class="action-button delete-button" onclick="deleteCard(this)">
+                        <i>&#10006;</i>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="profile-card2" data-timestamp="5">
+                <img src="user5.jpg" alt="User 5" onclick="viewPhoto('user5.jpg')">
+                <div class="profile-info">
+                    <h3 onclick="viewProfile('user5')">Дарья</h3>
+                </div>
+                <div class="action-buttons">
+                    <div class="action-button star-button" onclick="toggleStar(this)">
+                        <i>&#9733;</i>
+                    </div>
+                    <div class="action-button delete-button" onclick="deleteCard(this)">
+                        <i>&#10006;</i>
+                    </div>
+                </div>
+            </div>
+            <div class="button-bar">
+                <button class="button brown" onclick="goToSettings()">Налаштування</button>
+                <button class="button yellow" onclick="goToLikedYou()">Сподобались ви</button>
+                <button class="button green" onclick="goToSearch()">Пошук</button>
+                <button class="button orange" onclick="goToChats()">Чати</button>
+                <button class="button red" onclick="goToProfile()">Профіль</button>
+            </div>
+        </div>
+    </div>     
+
     <!-- Підключення скриптів -->
     <script src="script.js"></script>
 </body>
