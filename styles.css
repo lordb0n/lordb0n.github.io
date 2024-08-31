@@ -758,6 +758,13 @@ h2 {
 .star-button.starred i {
     color: gold; /* Колір при наведенні або активації */
 }
+.check-button:hover i {
+    color: #27ae60; /* Зелений колір при наведенні */
+}
+
+.check-button.checked i {
+    color: #27ae60; /* Зелений колір при активації */
+}
 
 .delete-button:hover i {
     color: #e74c3c; /* Колір при наведенні або активації */
