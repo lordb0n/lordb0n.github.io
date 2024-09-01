@@ -1,3 +1,11 @@
+:root {
+    --primary-color: #FF5864;
+    --background-color: #e6e6fa;
+    --text-color: #000000;
+    --secondary-color: #333333;
+    --hover-color: #555555;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -768,4 +776,38 @@ h2 {
 
 .delete-button:hover i {
     color: #e74c3c; /* Колір при наведенні або активації */
+}
+
+/* Конкретные стили для каждой темы */
+
+/* Черно-белая тема */
+.theme-black-white {
+    --background-color: #000000;
+    --text-color: #FFFFFF;
+    --secondary-color: #1a1a1a;
+    --hover-color: #333333;
+}
+
+/* Темно-серая тема */
+.theme-dark-gray {
+    --background-color: #2C2C2C;
+    --text-color: #FFFFFF;
+    --secondary-color: #1C1C1C;
+    --hover-color: #3D3D3D;
+}
+
+/* Фиолетово-розовая тема */
+.theme-purple-pink {
+    --background-color: #800080;
+    --text-color: #FFFFFF;
+    --secondary-color: #b030b0;
+    --hover-color: #c060c0;
+}
+
+/* Сине-голубая тема */
+.theme-blue-lightblue {
+    --background-color: #0000FF;
+    --text-color: #FFFFFF;
+    --secondary-color: #4682B4;
+    --hover-color: #5F9EA0;
 }
