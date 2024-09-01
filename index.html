@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <title>GORA</title>
     <!-- Підключення стилів -->
     <link rel="stylesheet" href="styles.css">
@@ -373,7 +374,6 @@
                 </div>
         </div>
     </div>
-
     <div class="menu-container" id="settingsPage" style="display: none;">
         <div class="title1 active"> Налаштування </div>
         <div class="menu">
@@ -388,7 +388,20 @@
             <a href="#" class="active">Соц мережі</a>
             <a href="#">Telegram</a>
             <a href="#">Instagram</a>
+            
+            <!-- Новый блок для выбора темы -->
+            <div class="settings-item">
+                <label>Виберіть тему:</label>
+                <div class="theme-selector">
+                    <div class="theme-circle theme-black-white" data-theme="black-white"></div>
+                    <div class="theme-circle theme-dark-gray" data-theme="dark-gray"></div>
+                    <div class="theme-circle theme-purple-pink" data-theme="purple-pink"></div>
+                    <div class="theme-circle theme-blue-lightblue" data-theme="blue-lightblue"></div>
+                </div>
+            </div>
+            <!-- Конец нового блока -->
         </div>
+        
         <div class="button-bar">
             <button class="button brown" onclick="goToSettings()">Налаштування</button>
             <button class="button yellow" onclick="goToLikedYou()">Сподобались ви</button>
@@ -396,7 +409,7 @@
             <button class="button orange" onclick="goToChats()">Чати</button>
             <button class="button red" onclick="goToProfile()">Профіль</button>
         </div>
-    </div>
+    </div>    
 
     <div id="content" style="display:none;">
         <!-- Контент, який буде завантажуватися за допомогою функції loadPage -->
@@ -577,7 +590,9 @@
     </div>     
 
     <!-- Підключення скриптів -->
-    <script src="script.js"></script>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 </body>
 
 </html>
