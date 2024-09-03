@@ -555,6 +555,8 @@ body, html {
 .button.green { background-color: #d63dba; }
 .button.brown { background-color: #d63dba; }
 .button.yellow { background-color: #d63dba; }
+.button.orange { background-color: #d63dba; }
+
 
 
 /* Додаткові стилі... */
@@ -939,6 +941,7 @@ h2 {
     background-color: var(--hover-color);
 }
 
+
 .top-bar3 {
     display: flex;
     justify-content: space-between;
@@ -1013,13 +1016,14 @@ h2 {
     padding: 10px;
     border-radius: 5px;
     position: absolute;
-    bottom: 120px; /* Зміщення вверх для додавання відступу від кнопок */
+    bottom: 160px; /* Збільшуємо зміщення вверх для додаткового відступу від кнопок */
     left: 50%;
     transform: translateX(-50%);
     text-align: left;
     width: 90%;
     max-width: 360px;
 }
+
 
 .profile-info3 h3 {
     margin: 0;
@@ -1037,11 +1041,12 @@ h2 {
     align-items: center;
     padding: 10px;
     background-color: #000; /* Чорний фон нижньої панелі */
-    gap: 20px;
+    gap: 30px; /* Збільшення простору між кнопками */
     position: absolute;
     bottom: 10px;
     width: 100%;
 }
+
 
 .bottom-bar3 .icon-button3 {
     background-color: #FFF;
