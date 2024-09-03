@@ -173,7 +173,7 @@
                 <p>Ваше фото</p>
             </div>
             <div class="info">
-                <p>Ім'я, вік</p>
+                <p>Дарина , 21</p>
             </div>
             <div class="details">
                 <p>БІО:</p>
@@ -362,28 +362,36 @@
                             <span class="checkmark"></span>
                         </label>
                     </div>
-                </div>
-                <button id="save-profile" class="save-button">Зберегти</button>
-            </div>
-                <div class="button-bar">
-    <button class="button brown" onclick="goToSettings()">
-        <img src="photo/icon1.png" alt="Settings" class="button-icon">
-    </button>
-    <button class="button brown" onclick="goToLikedYou()">
-        <img src="photo/icon2.png" alt="Liked You" class="button-icon">
-    </button>
-    <button class="button brown" onclick="goToSearch()">
-        <img src="photo/icon3.png" alt="Search" class="button-icon">
-    </button>
-    <button class="button brown" onclick="goToChats()">
-        <img src="photo/icon4.png" alt="Chats" class="button-icon">
-    </button>
-    <button class="button brown" onclick="goToProfile()">
-        <img src="photo/icon5.png" alt="Profile" class="button-icon">
-    </button>
-</div>
+                    <button id="save-profile" class="save-button">Зберегти</button>
 
+                </div>
+            </div>                  
+                
+                <div class="button-bar">
+                    <button class="button brown" onclick="goToSettings()">
+                        <img src="photo/icon1.png" alt="Settings" class="button-icon">
+                    
+                    </button>
+                    <button class="button yellow" onclick="goToLikedYou()">
+                        <img src="photo/icon2.png" alt="Liked You" class="button-icon">
+                    
+                    </button>
+                    <button class="button green" onclick="goToSearch()">
+                        <img src="photo/icon3.png" alt="Search" class="button-icon">
+                    
+                    </button>
+                    <button class="button orange" onclick="goToChats()">
+                        <img src="photo/icon4.png" alt="Chats" class="button-icon">
+                    
+                    </button>
+                    <button class="button red" onclick="goToProfile()">
+                        <img src="photo/icon5.png" alt="Profile" class="button-icon">
+                    
+                    </button>
+                </div>
             </div>
+        </div>
+    </div>
 
     <div class="menu-container" id="settingsPage" style="display: none;">
         <div class="content-container">
@@ -437,26 +445,29 @@
         <div class="button-bar">
             <button class="button brown" onclick="goToSettings()">
                 <img src="photo/icon1.png" alt="Settings" class="button-icon">
+            
             </button>
             <button class="button yellow" onclick="goToLikedYou()">
                 <img src="photo/icon2.png" alt="Liked You" class="button-icon">
+            
             </button>
             <button class="button green" onclick="goToSearch()">
                 <img src="photo/icon3.png" alt="Search" class="button-icon">
+            
             </button>
-            <button class="button green" onclick="goToChats()">
+            <button class="button orange" onclick="goToChats()">
                 <img src="photo/icon4.png" alt="Chats" class="button-icon">
+            
             </button>
             <button class="button red" onclick="goToProfile()">
                 <img src="photo/icon5.png" alt="Profile" class="button-icon">
+            
             </button>
         </div>
     </div>
     
 
-    <div id="content" style="display:none;">
-        <!-- Контент, який буде завантажуватися за допомогою функції loadPage -->
-    </div>
+
 
     <div class="menu-container" id="chatsPage" style="display: none;">
         <div class="chat-container">
@@ -539,6 +550,7 @@
                     <img src="photo/icon5.png" alt="Profile" class="button-icon">
                 
                 </button>
+            </div>
         </div>
     </div>     
 
@@ -643,24 +655,82 @@
                 </button>
                 <button class="button yellow" onclick="goToLikedYou()">
                     <img src="photo/icon2.png" alt="Liked You" class="button-icon">
-            
+                
                 </button>
                 <button class="button green" onclick="goToSearch()">
                     <img src="photo/icon3.png" alt="Search" class="button-icon">
-                   
+                
                 </button>
                 <button class="button orange" onclick="goToChats()">
                     <img src="photo/icon4.png" alt="Chats" class="button-icon">
-                   
+                
                 </button>
                 <button class="button red" onclick="goToProfile()">
                     <img src="photo/icon5.png" alt="Profile" class="button-icon">
-                    
+                
                 </button>
             </div>
         </div>
     </div>     
-
+    
+    <div class="menu-container" id="searchPage" style="display: none;">
+        <div class="top-bar3">
+            <div class="logo3">Tinder</div>
+            <div class="top-bar-icons3">
+                <div class="icon-button3"><i>💬</i></div>
+                <div class="icon-button3"><i>🎁</i></div>
+            </div>
+        </div>
+    
+        <!-- Основний контент -->
+        <div class="content3">
+            <div class="photo-container3">
+                <!-- Індикація фото -->
+                <div class="photo-indicators3">
+                    <div class="photo-indicator3 active"></div>
+                    <div class="photo-indicator3"></div>
+                    <div class="photo-indicator3"></div>
+                </div>
+                <!-- Фото профілю -->
+                <img src="https://pixewall.com/wp-content/uploads/2023/04/Aesthete-Wallpaper-HD.jpg" alt="User Photo">
+            </div>
+            <div class="profile-info3">
+                <h3>Meera, 22</h3>
+                <p>🌍 I just realized that... 2020 was 3 years ago...I also just realized time isn’t real.</p>
+            </div>
+        </div>
+    
+        <!-- Нижня панель з кнопками -->
+        <div class="bottom-bar3">
+            <div class="icon-button3 small rewind-button3"><i>⏪</i></div>
+            <div class="icon-button3 large dislike-button3"><i>❌</i></div>
+            <div class="icon-button3 small superlike-button3"><i>⭐</i></div>
+            <div class="icon-button3 large like-button3"><i>💚</i></div>
+            <div class="icon-button3 small boost-button3"><i>⚡</i></div>
+        </div>
+        <div class="button-bar">
+            <button class="button brown" onclick="goToSettings()">
+                <img src="photo/icon1.png" alt="Settings" class="button-icon">
+            
+            </button>
+            <button class="button yellow" onclick="goToLikedYou()">
+                <img src="photo/icon2.png" alt="Liked You" class="button-icon">
+            
+            </button>
+            <button class="button green" onclick="goToSearch()">
+                <img src="photo/icon3.png" alt="Search" class="button-icon">
+            
+            </button>
+            <button class="button orange" onclick="goToChats()">
+                <img src="photo/icon4.png" alt="Chats" class="button-icon">
+            
+            </button>
+            <button class="button red" onclick="goToProfile()">
+                <img src="photo/icon5.png" alt="Profile" class="button-icon">
+            
+            </button>
+        </div>
+    </div>
     <!-- Підключення скриптів -->
     <script src="script.js"></script>
 </body>
