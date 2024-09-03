@@ -422,22 +422,30 @@ function changeTheme(theme) {
             root.style.setProperty('--hover-color', '#555555');
             break;
     }
-    // Сохранение выбранной темы
-    localStorage.setItem('selectedTheme', theme);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('selectedTheme');
+// Додаємо обробники подій для перемикачів тем
+// Проверяем, есть ли сохраненная тема в localStorage
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('selected-theme');
     if (savedTheme) {
-        changeTheme(savedTheme);
+        document.documentElement.className = savedTheme;
     }
-
-    document.querySelectorAll('.theme-circle').forEach(circle => {
-        circle.addEventListener('click', () => {
-            const selectedTheme = circle.getAttribute('data-theme');
-            changeTheme(selectedTheme);
-        });
-    });
 });
 
+// Обработчик переключения тем
+const buttons = document.querySelectorAll('.button');
+
+buttons.forEach(button => {
+    button.addEventListener('click', function() {
+        buttons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+    });
+
+    // Проверка текущего URL для установки активного состояния при загрузке страницы
+    const pageName = button.getAttribute('onclick').match(/\w+/)[0].toLowerCase();
+    if (window.location.href.includes(pageName)) {
+        button.classList.add('active');
+    }
+});
 
