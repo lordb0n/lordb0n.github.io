@@ -173,7 +173,7 @@
                 <p>Ваше фото</p>
             </div>
             <div class="info">
-                <p>Дарина , 21</p>
+                <p>Ім'я, вік</p>
             </div>
             <div class="details">
                 <p>БІО:</p>
@@ -362,51 +362,94 @@
                             <span class="checkmark"></span>
                         </label>
                     </div>
-                </div>                
-                <button id="save-profile" class="save-button">Зберегти</button>
-                <div class="button-bar">
-                    <button class="button brown" onclick="goToSettings()">Налаштування</button>
-                    <button class="button yellow" onclick="goToLikedYou()">Сподобались ви</button>
-                    <button class="button green" onclick="goToSearch()">Пошук</button>
-                    <button class="button orange" onclick="goToChats()">Чати</button>
-                    <button class="button red" onclick="goToProfile()">Профіль</button>
                 </div>
-        </div>
-    </div>
+                <button id="save-profile" class="save-button">Зберегти</button>
+            </div>
+                <div class="button-bar">
+    <button class="button brown" onclick="goToSettings()">
+        <img src="photo/icon1.png" alt="Settings" class="button-icon">
+    </button>
+    <button class="button brown" onclick="goToLikedYou()">
+        <img src="photo/icon2.png" alt="Liked You" class="button-icon">
+    </button>
+    <button class="button brown" onclick="goToSearch()">
+        <img src="photo/icon3.png" alt="Search" class="button-icon">
+    </button>
+    <button class="button brown" onclick="goToChats()">
+        <img src="photo/icon4.png" alt="Chats" class="button-icon">
+    </button>
+    <button class="button brown" onclick="goToProfile()">
+        <img src="photo/icon5.png" alt="Profile" class="button-icon">
+    </button>
+</div>
+
+            </div>
 
     <div class="menu-container" id="settingsPage" style="display: none;">
-        <div class="title1 active"> Налаштування </div>
-        <div class="menu">
-            <a href="#" class="active">Загальні</a>
-            <a href="#">Акаунт</a>
-            <a href="#">Тема</a>
-            <a href="#">Мова</a>
-            <a href="#" class="active">Інформація</a>
-            <a href="#">Політика конфіденційності</a>
-            <a href="#">Правила та умови</a>
-            <a href="#">Тех підтримка</a>
-            <a href="#" class="active">Соц мережі</a>
-            <a href="#">Telegram</a>
-            <a href="#">Instagram</a>
-            
-            <!-- Новый блок для выбора темы -->
-            <div class="settings-item">
-                <div class="theme-selector">
-                    <div class="theme-circle theme-black-white" data-theme="black-white"></div>
-                    <div class="theme-circle theme-dark-gray" data-theme="dark-gray"></div>
-                    <div class="theme-circle theme-purple-pink" data-theme="purple-pink"></div>
-                    <div class="theme-circle theme-blue-lightblue" data-theme="blue-lightblue"></div>
+        <div class="content-container">
+            <div class="settings-menu">
+                <h2>Налаштування</h2>
+                <div class="settings-item">
+                    <label>Загальні</label>
+                </div>
+                <div class="settings-item">
+                    <label>Акаунт</label>
+                </div>
+                <div class="settings-item">
+                    <label>Тема</label>
+                    <div class="theme-selector">
+                        <div class="theme-selector">
+                            <div class="theme-circle theme-black-white" data-theme="theme-black-white"></div>
+                            <div class="theme-circle theme-dark-gray" data-theme="theme-dark-gray"></div>
+                            <div class="theme-circle theme-purple-pink" data-theme="theme-purple-pink"></div>
+                            <div class="theme-circle theme-blue-lightblue" data-theme="theme-blue-lightblue"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="settings-item">
+                    <label>Мова</label>
+                </div>
+                <div class="settings-item">
+                    <label>Інформація</label>
+                </div>
+                <div class="settings-item">
+                    <label>Політика конфіденційності</label>
+                </div>
+                <div class="settings-item">
+                    <label>Правила та умови</label>
+                </div>
+                <div class="settings-item">
+                    <label>Тех підтримка</label>
+                </div>
+                <div class="settings-item">
+                    <label>Соц мережі</label>
+                </div>
+                <div class="settings-item">
+                    <label>Telegram</label>
+                </div>
+                <div class="settings-item">
+                    <label>Instagram</label>
                 </div>
             </div>
-            <!-- Конец нового блока -->
         </div>
         
         <div class="button-bar">
-            <button class="button brown" onclick="goToSettings()">Налаштування</button>
-            <button class="button yellow" onclick="goToLikedYou()">Сподобались ви</button>
-            <button class="button green" onclick="goToSearch()">Пошук</button>
-            <button class="button orange" onclick="goToChats()">Чати</button>
-            <button class="button red" onclick="goToProfile()">Профіль</button>
+            <button class="button brown" onclick="goToSettings()">
+                <img src="photo/icon1.png" alt="Settings" class="button-icon">
+            </button>
+            <button class="button yellow" onclick="goToLikedYou()">
+                <img src="photo/icon2.png" alt="Liked You" class="button-icon">
+            </button>
+            <button class="button green" onclick="goToSearch()">
+                <img src="photo/icon3.png" alt="Search" class="button-icon">
+            </button>
+            <button class="button green" onclick="goToChats()">
+                <img src="photo/icon4.png" alt="Chats" class="button-icon">
+            </button>
+            <button class="button red" onclick="goToProfile()">
+                <img src="photo/icon5.png" alt="Profile" class="button-icon">
+            </button>
         </div>
     </div>
     
@@ -476,12 +519,26 @@
             </div>
         
             <div class="button-bar">
-                <button class="button brown" onclick="goToSettings()">Налаштування</button>
-                <button class="button yellow" onclick="goToLikedYou()">Сподобались ви</button>
-                <button class="button green" onclick="goToSearch()">Пошук</button>
-                <button class="button orange" onclick="goToChats()">Чати</button>
-                <button class="button red" onclick="goToProfile()">Профіль</button>
-            </div>
+                <button class="button brown" onclick="goToSettings()">
+                    <img src="photo/icon1.png" alt="Settings" class="button-icon">
+                
+                </button>
+                <button class="button yellow" onclick="goToLikedYou()">
+                    <img src="photo/icon2.png" alt="Liked You" class="button-icon">
+                
+                </button>
+                <button class="button green" onclick="goToSearch()">
+                    <img src="photo/icon3.png" alt="Search" class="button-icon">
+                
+                </button>
+                <button class="button orange" onclick="goToChats()">
+                    <img src="photo/icon4.png" alt="Chats" class="button-icon">
+                
+                </button>
+                <button class="button red" onclick="goToProfile()">
+                    <img src="photo/icon5.png" alt="Profile" class="button-icon">
+                
+                </button>
         </div>
     </div>     
 
@@ -580,11 +637,26 @@
                 </div>
             </div>
             <div class="button-bar">
-                <button class="button brown" onclick="goToSettings()">Налаштування</button>
-                <button class="button yellow" onclick="goToLikedYou()">Сподобались ви</button>
-                <button class="button green" onclick="goToSearch()">Пошук</button>
-                <button class="button orange" onclick="goToChats()">Чати</button>
-                <button class="button red" onclick="goToProfile()">Профіль</button>
+                <button class="button brown" onclick="goToSettings()">
+                    <img src="photo/icon1.png" alt="Settings" class="button-icon">
+                
+                </button>
+                <button class="button yellow" onclick="goToLikedYou()">
+                    <img src="photo/icon2.png" alt="Liked You" class="button-icon">
+            
+                </button>
+                <button class="button green" onclick="goToSearch()">
+                    <img src="photo/icon3.png" alt="Search" class="button-icon">
+                   
+                </button>
+                <button class="button orange" onclick="goToChats()">
+                    <img src="photo/icon4.png" alt="Chats" class="button-icon">
+                   
+                </button>
+                <button class="button red" onclick="goToProfile()">
+                    <img src="photo/icon5.png" alt="Profile" class="button-icon">
+                    
+                </button>
             </div>
         </div>
     </div>     
