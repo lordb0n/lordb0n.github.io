@@ -387,96 +387,57 @@ function deleteCard(button) {
 function checkUser(button) {
     button.classList.toggle('checked');
 }
-
-function submitProfile() {
-    const name = document.getElementById('name-input').value;
-    const age = document.getElementById('age-input').value;
-    const gender = document.getElementById('gender-select').value;
-    const orientation = document.getElementById('orientation-select').value;
-    const interested_in = document.getElementById('interested-in-select').value;
-    const bio = document.getElementById('bio').value;
-    const temptations = Array.from(document.querySelectorAll('input[name="temptations"]:checked')).map(el => el.value);
-
-    const data = {
-        name: name,
-        age: age,
-        gender: gender,
-        orientation: orientation,
-        interested_in: interested_in,
-        bio: bio,
-        temptations: temptations
-    };
-
-    function changeTheme(theme) {
-        const root = document.documentElement;
-        switch (theme) {
-            case 'black-white':
-                root.style.setProperty('--background-color', '#000000');
-                root.style.setProperty('--text-color', '#FFFFFF');
-                root.style.setProperty('--secondary-color', '#1a1a1a');
-                root.style.setProperty('--hover-color', '#333333');
-                break;
-            case 'dark-gray':
-                root.style.setProperty('--background-color', '#2C2C2C');
-                root.style.setProperty('--text-color', '#FFFFFF');
-                root.style.setProperty('--secondary-color', '#1C1C1C');
-                root.style.setProperty('--hover-color', '#3D3D3D');
-                break;
-            case 'purple-pink':
-                root.style.setProperty('--background-color', '#800080');
-                root.style.setProperty('--text-color', '#FFFFFF');
-                root.style.setProperty('--secondary-color', '#b030b0');
-                root.style.setProperty('--hover-color', '#c060c0');
-                break;
-            case 'blue-lightblue':
-                root.style.setProperty('--background-color', '#0000FF');
-                root.style.setProperty('--text-color', '#FFFFFF');
-                root.style.setProperty('--secondary-color', '#4682B4');
-                root.style.setProperty('--hover-color', '#5F9EA0');
-                break;
-            default:
-                // Тема за замовчуванням
-                root.style.setProperty('--background-color', '#e6e6fa');
-                root.style.setProperty('--text-color', '#000000');
-                root.style.setProperty('--secondary-color', '#333333');
-                root.style.setProperty('--hover-color', '#555555');
-                break;
-        }
-    
-        // Сохранение выбранной темы
-        localStorage.setItem('selectedTheme', theme);
+function changeTheme(theme) {
+    const root = document.documentElement;
+    switch (theme) {
+        case 'black-white':
+            root.style.setProperty('--background-color', '#000000');
+            root.style.setProperty('--text-color', '#FFFFFF');
+            root.style.setProperty('--secondary-color', '#1a1a1a');
+            root.style.setProperty('--hover-color', '#333333');
+            break;
+        case 'dark-gray':
+            root.style.setProperty('--background-color', '#2C2C2C');
+            root.style.setProperty('--text-color', '#FFFFFF');
+            root.style.setProperty('--secondary-color', '#1C1C1C');
+            root.style.setProperty('--hover-color', '#3D3D3D');
+            break;
+        case 'purple-pink':
+            root.style.setProperty('--background-color', '#800080');
+            root.style.setProperty('--text-color', '#FFFFFF');
+            root.style.setProperty('--secondary-color', '#b030b0');
+            root.style.setProperty('--hover-color', '#c060c0');
+            break;
+        case 'blue-lightblue':
+            root.style.setProperty('--background-color', '#0000FF');
+            root.style.setProperty('--text-color', '#FFFFFF');
+            root.style.setProperty('--secondary-color', '#4682B4');
+            root.style.setProperty('--hover-color', '#5F9EA0');
+            break;
+        default:
+            // Тема за замовчуванням
+            root.style.setProperty('--background-color', '#e6e6fa');
+            root.style.setProperty('--text-color', '#000000');
+            root.style.setProperty('--secondary-color', '#333333');
+            root.style.setProperty('--hover-color', '#555555');
+            break;
     }
-    
-    document.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('selectedTheme');
-        if (savedTheme) {
-            changeTheme(savedTheme);
-        }
-    
-        document.querySelectorAll('.theme-circle').forEach(circle => {
-            circle.addEventListener('click', () => {
-                const selectedTheme = circle.getAttribute('data-theme');
-                changeTheme(selectedTheme);
-            });
-        });
-    });
-    
-    fetch('/submit_profile', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        // Redirect to another page or update the UI based on the response
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+    // Сохранение выбранной темы
+    localStorage.setItem('selectedTheme', theme);
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('selectedTheme');
+    if (savedTheme) {
+        changeTheme(savedTheme);
+    }
+
+    document.querySelectorAll('.theme-circle').forEach(circle => {
+        circle.addEventListener('click', () => {
+            const selectedTheme = circle.getAttribute('data-theme');
+            changeTheme(selectedTheme);
+        });
+    });
+});
 
 
