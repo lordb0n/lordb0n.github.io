@@ -441,7 +441,6 @@ buttons.forEach(button => {
         buttons.forEach(btn => btn.classList.remove('active'));
         this.classList.add('active');
     });
-
     // Проверка текущего URL для установки активного состояния при загрузке страницы
     const pageName = button.getAttribute('onclick').match(/\w+/)[0].toLowerCase();
     if (window.location.href.includes(pageName)) {
