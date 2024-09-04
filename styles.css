@@ -266,6 +266,7 @@ body, html {
     justify-content: flex-start; /* Починаємо з верхньої частини */
     align-items: center;
     padding: 0 20px;
+    padding-bottom: 53px; 
 }
 .profile-card {
     width: 100vw;
