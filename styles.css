@@ -16,6 +16,7 @@ body, html {
     font-family: Arial, sans-serif;
     box-sizing: border-box;
     overflow-x: hidden;
+    font-family: 'roboto', sans-serif;
 }
 
 .container {
@@ -629,41 +630,24 @@ body, html {
     height: 100%;
     padding: 20px;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 
-.chat-header {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-/* Стиль для кожного чату */
 .chat-message {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
     padding: 10px;
-    border: 2px solid #ffffff;
-    border-radius: 25px; /* Робимо овал */
-    background-color: #d63dba; /* Фон за замовчуванням */
-    transition: background-color 0.3s ease; /* Анімація плавної зміни кольору */
+    background-color: #fa77e2; /* Фон за замовчуванням */
+    transition: background-color 0.3s ease;
+    width: 100%; /* Розтягнути повідомлення на всю ширину */
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border-radius: 0; /* Прибрати округлення */
 }
 
-/* Зміна фону при наведенні */
-.chat-message:hover {
-    background-color: white; /* Зміна фону на білий */
-}
-
-/* Зміна фону при натисканні */
-.chat-message:active {
-    background-color: white; /* Фон також білий при натисканні */
-}
-
-/* Стиль для аватару в чаті */
 .chat-message-avatar {
     background-color: #ffffff;
-    color: rgb(0, 0, 0);
+    color: #000;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -673,40 +657,55 @@ body, html {
     font-size: 1.5em;
     font-weight: bold;
     margin-right: 15px;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Анімація плавної зміни кольору */
 }
 
-/* Зміна кольору тексту та аватару при наведенні */
-.chat-message:hover .chat-message-avatar,
-.chat-message:active .chat-message-avatar {
-    background-color: #333; /* Фон аватару стає темним при наведенні */
-    color: white; /* Текст стає білим при наведенні */
+.chat-message-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
-/* Стиль для тексту в чаті */
-.chat-message-text strong {
-    color: #333;
-    font-size: 1.2em;
+.chat-message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 5px;
-    transition: color 0.3s ease; /* Анімація плавної зміни кольору тексту */
 }
 
-.chat-message-text span {
+.chat-message-header strong {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.chat-message-header .message-time {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.chat-message-text {
     color: #555;
-    font-size: 1em;
-    transition: color 0.3s ease; /* Анімація плавної зміни кольору тексту */
 }
 
-/* Зміна кольору тексту при наведенні */
-.chat-message:hover .chat-message-text strong,
-.chat-message:hover .chat-message-text span,
-.chat-message:active .chat-message-text strong,
-.chat-message:active .chat-message-text span {
-    color: #333; /* Текст стає темнішим при наведенні */
+.chat-message:hover {
+    background-color: white;
 }
+
+/* Відключаємо можливість зміни розміру */
+::-webkit-resizer {
+    display: none;
+}
+
+.chat-message:hover .chat-message-header strong {
+    color: #333;
+}
+
+.chat-message:hover .chat-message-text {
+    color: #333;
+}
+
 
 body1 {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background: linear-gradient(135deg, #d63dba, #c833b0);
     margin: 0;
     padding: 20px;
@@ -828,40 +827,59 @@ h2 {
 .settings-menu {
     width: 100%;
     max-width: 400px;
-    background-color: var(--secondary-color);
+    background-color: transparent; /* Сделать фон прозрачным */
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    border-radius: 0; /* Убрать закругленные углы */
+    box-shadow: none; /* Убрать тень */
 }
 
 .settings-menu h2 {
     margin-top: 0;
-    color: #ffffff;
+    font-size: 30px;
+    color: #000000; /* Сделать цвет текста черным или любым другим подходящим */
+}
+
+.theme-selector {
+    display: flex; /* Выстраиваем элементы в ряд */
+    justify-content: space-between; /* Равномерно распределяем элементы */
+    gap: 10px; /* Интервал между кругами */
+    align-items: center; /* Выравниваем по центру по вертикали */
+    margin-top: -1px; /* Убираем верхний отступ */
+    padding-top: -5px; /* Убираем внутренний верхний отступ */
 }
 
 .settings-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--hover-color);
+    padding: 5px 10px; /* Збільшуємо внутрішні відступи */
+    margin-bottom: 3px;
+    border-radius: 8px; /* Закруглюємо кути */
+    background-color: transparent; /* За замовчуванням - прозорий фон */
+    transition: background-color 0.3s ease; /* Плавна зміна фону */
 }
 
-.settings-item:last-child {
-    border-bottom: none;
+.settings-item.special {
+    background-color: #f1e5f1; /* Фон для вибраних елементів */
+}
+
+.settings-item:hover {
+    background-color: #ffffff; /* Зміна фону при наведенні */
+}
+
+.settings-item:active {
+    background-color: #d63dba; /* Зміна фону при натисканні */
 }
 
 .settings-item label {
-    font-size: 16px;
-    color: #ffffff;
+    font-size: 22px;
+    color: #000000; /* Чорний текст */
 }
 
-/* Стилі для перемикачів тем */
-.theme-selector {
-    display: flex;
-    gap: 10px;
-}
 
+
+
+/* Изменить стиль переключателей тем (при необходимости) */
 .theme-circle {
     width: 40px;
     height: 40px;
@@ -869,14 +887,18 @@ h2 {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    border: 2px solid transparent;
+    border: 2px solid #000000; /* Сделать границу черной */
     transition: transform 0.2s, border-color 0.2s;
 }
 
+
 .theme-circle:hover {
     transform: scale(1.1);
-    border-color: var(--hover-color);
+    border-color: #000000; /* Изменить цвет границы при наведении */
 }
+
+/* Остальные стили тем могут остаться без изменений */
+
 
 .theme-circle::before,
 .theme-circle::after {
@@ -921,25 +943,63 @@ h2 {
 
 /* Стилі для кнопок */
 .button-bar {
+    position: fixed; /* Фіксована позиція */
+    bottom: 0; /* Прив'язка до нижньої частини екрану */
+    left: 0;
+    width: 100%; /* Ширина на весь екран */
+    background-color: #d63dba; /* Фон панелі */
     display: flex;
-    height: 60px;
-    background-color: var(--secondary-color);
+    justify-content: space-around; /* Рівномірно розташовуємо кнопки */
+    align-items: center;
+    height: 70px; /* Фіксована висота панелі кнопок */
+    z-index: 9999; /* Панель завжди зверху */
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Тінь для панелі */
+    box-sizing: border-box;
 }
 
-.button-bar button {
-    flex: 1;
+.button {
+    background: none;
     border: none;
-    outline: none;
     cursor: pointer;
-    color: var(--text-color);
-    background-color: var(--secondary-color);
-    font-size: 16px;
-    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    color: white;
 }
 
-.button-bar button:hover {
-    background-color: var(--hover-color);
+.button-icon {
+    width: 40px;
+    height: 40px;
 }
+
+.button:hover {
+    background-color: #444444;
+}
+
+.button:active {
+    background-color: #333;
+}
+
+/* Адаптивний дизайн для мобільних */
+@media (max-width: 768px) {
+    .button-bar {
+        height: 60px; /* Зменшуємо висоту панелі на мобільних пристроях */
+    }
+
+    .button {
+        width: 50px;
+        height: 50px;
+    }
+
+    .button-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
 
 
 .top-bar3 {
@@ -947,7 +1007,7 @@ h2 {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #000; /* Чорна верхня панель */
+    background-color: #d63dba; /* Чорна верхня панель */
 }
 
 .top-bar3 img {
@@ -958,7 +1018,7 @@ h2 {
 .logo3 {
     font-size: 24px;
     font-weight: bold;
-    color: #FF5864; /* Червоний колір для логотипу */
+    color: #000000; /* Червоний колір для логотипу */
 }
 
 .content3 {
@@ -967,7 +1027,7 @@ h2 {
     flex-direction: column;
     justify-content: flex-start; /* Початок контенту згори */
     align-items: center;
-    background-color: #000; /* Чорний фон основного контенту */
+    background-color: #d63dba; /* Чорний фон основного контенту */
     position: relative;
     padding: 0; /* Видалення відступів */
 }
@@ -1011,7 +1071,7 @@ h2 {
 }
 
 .profile-info3 {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #000000;
     color: white;
     padding: 10px;
     border-radius: 5px;
@@ -1040,13 +1100,25 @@ h2 {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background-color: #000; /* Чорний фон нижньої панелі */
+    background-color: #d63dba; /* Чорний фон нижньої панелі */
     gap: 30px; /* Збільшення простору між кнопками */
     position: absolute;
     bottom: 10px;
     width: 100%;
 }
 
+
+.bottom-bar3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #d63dba; /* Фон нижньої панелі */
+    gap: 30px; /* Збільшення простору між кнопками */
+    position: absolute;
+    bottom: 0; /* Робимо панель фіксованою на дні екрана */
+    width: 100%;
+}
 
 .bottom-bar3 .icon-button3 {
     background-color: #FFF;
@@ -1082,6 +1154,14 @@ h2 {
 }
 
 .bottom-bar3 .like-button3 i {
+    color: #FFF;
+}
+
+.bottom-bar3 .dislike-button3 {
+    background-color: #FF5864; /* Червона кнопка "Dislike" */
+}
+
+.bottom-bar3 .dislike-button3 i {
     color: #FFF;
 }
 
