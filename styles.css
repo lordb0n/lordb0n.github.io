@@ -258,16 +258,20 @@ body, html {
 }
 .container1 {
     width: 100%;
-    height: 100%;
+    height: 100vh; /* Забезпечує, що контейнер займатиме 100% висоти вікна браузера */
     max-width: 150vw;
     background-color: #d63dba;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Починаємо з верхньої частини */
+    justify-content: flex-start;
     align-items: center;
     padding: 0 20px;
     padding-bottom: 53px; 
+    box-sizing: border-box; /* Включає padding у загальну ширину та висоту */
+    overflow-y: auto; /* Додає прокрутку, якщо контент перевищує висоту контейнера */
+    overflow-x: hidden; /* Приховує горизонтальну прокрутку */
 }
+
 .profile-card {
     width: 100vw;
     height: 100vh;
@@ -638,7 +642,7 @@ body, html {
     flex-direction: column;
     align-items: flex-start;
     padding: 10px 10px; /* Зменшено верхній і нижній відступ */
-    background-color: #fa77e2;
+    background-color: #d63dba;
     transition: background-color 0.3s ease;
     width: 100%;
     box-sizing: border-box;
@@ -689,7 +693,7 @@ body, html {
 
 .chat-divider {
     height: 1px;
-    background-color: #d63dba;
+    background-color: #fa77e2;
     margin: 0;
 }
 
