@@ -267,8 +267,7 @@ body, html {
     padding: 0;
     box-sizing: border-box;
     overflow-y: auto; /* Прокрутка при переполнении */
-    padding-left: 1px; /* Додаємо відступ зліва */
-
+    padding-left: 0,001px; /* Додаємо відступ зліва */
 }
 
 .profile-card {
