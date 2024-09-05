@@ -251,11 +251,40 @@ body, html {
 }
 
 .grid-item input[type="checkbox"] {
-    margin-top: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     width: 30px;
     height: 30px;
+    border: 2px solid #555; /* Колір рамки */
+    border-radius: 5px;
     cursor: pointer;
+    background-color: transparent; /* Прозорий фон за замовчуванням */
+    position: relative;
 }
+
+.grid-item input[type="checkbox"]:checked {
+    background-color: #555; /* Сірий фон при виборі */
+    border: none; /* Прибираємо рамку при виборі */
+}
+
+.grid-item input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 10px;
+    height: 20px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: block;
+}
+
+
+
+
+
 .container1 {
     width: 100vw; /* Занимает всю ширину экрана */
     height: 100vh; /* Занимает всю высоту экрана */
