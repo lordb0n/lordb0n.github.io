@@ -267,6 +267,8 @@ body, html {
     padding: 0;
     box-sizing: border-box;
     overflow-y: auto; /* Прокрутка при переполнении */
+    padding-left: 1px; /* Додаємо відступ зліва */
+
 }
 
 .profile-card {
@@ -278,6 +280,8 @@ body, html {
     justify-content: flex-start;
     padding: 1%;
     overflow-y: auto;
+    padding-bottom: 23px; /* Додаємо додатковий відступ знизу, щоб кнопка не була перекрита */
+
 }
 .temptations {
     display: grid;
@@ -415,6 +419,24 @@ body, html {
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
 }
+input[type="checkbox"] {
+    -webkit-appearance: none; /* Для Chrome і Safari */
+    -moz-appearance: none; /* Для Firefox */
+    appearance: none; /* Для інших браузерів */
+    background-color: transparent; /* Прибираємо фон */
+    margin: 0; /* Забираємо зайвий відступ */
+}
+
+input[type="checkbox"]:checked {
+    -webkit-appearance: none; /* Для Chrome і Safari */
+    -moz-appearance: none; /* Для Firefox */
+    appearance: none; /* Для інших браузерів */
+}
+
+input[type="checkbox"]::before {
+    display: none; /* Прибирає додатковий або вбудований квадрат */
+}
+
 
 #bio {
     width: 100%;
