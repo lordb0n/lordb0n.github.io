@@ -1136,6 +1136,7 @@ h2 {
     transform: translateX(-50%);
     text-align: left;
     width: 382px;
+    bottom: 98px;
 }
 
 .profile-info3 h3 {
